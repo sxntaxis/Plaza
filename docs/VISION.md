@@ -8,11 +8,13 @@ Plaza no es un sitio web. No es un buscador. No es una aplicación. Plaza es la 
 
 ## Por qué Plaza existe
 
-La información jurídica costarricense es pública por mandato constitucional, pero no es accesible en los términos que el siglo XXI exige. SCIJ — el sistema oficial — cumple su función histórica como navegador humano del corpus legal, pero no fue diseñado para ser consumido por sistemas automatizados. No tiene identificadores estables, no expone una API pública, no ofrece descargas estructuradas, y no habla ningún estándar internacional de datos jurídicos.
+La información jurídica costarricense es pública por mandato constitucional, y existe un marco legal habilitante que obliga al Estado a publicarla en formatos abiertos e interoperables. Aun así, el corpus normativo del país no es accesible en los términos que el siglo XXI exige.
 
-Esta brecha tiene un costo concreto. Cualquier asistente de IA que hoy responde preguntas sobre derecho costarricense lo hace desde conocimiento inferido — memorizado durante su entrenamiento, potencialmente desactualizado, frecuentemente alucinado, y siempre sin fuente verificable. El usuario no tiene manera de saber si la respuesta es correcta. El abogado no puede citar. El ciudadano no puede confiar.
+SCIJ — el sistema oficial — cumple su función histórica como navegador humano del corpus legal. Sus identificadores de recursos son estables, pero no son derivables programáticamente ni alineados con los estándares internacionales de datos jurídicos. Para que un sistema externo consulte una norma específica, primero debe descubrir sus parámetros internos — lo que rompe la interoperabilidad automática. No hay API pública documentada. No hay descargas estructuradas. No hay vocabulario común con el ecosistema global de derecho-como-dato.
 
-Plaza cierra esa brecha. Transforma el corpus normativo costarricense en un recurso que cualquier sistema de IA responsable puede consultar con la garantía de que cada afirmación se ancla en un texto oficial identificable, con versión explícita, con fecha de vigencia, y con enlace directo al artículo correspondiente.
+Esta brecha tiene un costo concreto. Cuando un asistente de inteligencia artificial responde hoy sobre derecho costarricense, usualmente lo hace desde conocimiento memorizado durante su entrenamiento: puede estar desactualizado, puede alucinar un artículo, y su capacidad de citar fuentes verificables depende de si tiene acceso a un corpus confiable sobre el cual hacer retrieval. Ese corpus confiable, estructurado y citable no existe hoy para el derecho costarricense. El usuario no tiene cómo verificar. El abogado no puede citar con trazabilidad. El ciudadano no puede confiar.
+
+Plaza cierra esa brecha. Transforma el corpus normativo costarricense en un recurso que cualquier sistema puede consultar con la garantía de que cada afirmación se ancla en un texto oficial identificable, con versión explícita, con fecha de vigencia, y con enlace directo al artículo correspondiente.
 
 ## Qué hace Plaza
 
@@ -81,3 +83,6 @@ Este documento es el punto de entrada a la constitución del proyecto. Los demá
 - [`DATA_MODEL.md`](DATA_MODEL.md) — el modelo semántico del corpus, alineado a estándares internacionales.
 - [`QUALITY_AND_VALIDATION.md`](QUALITY_AND_VALIDATION.md) — los criterios de calidad que separan trabajo en progreso de contrato público.
 - [`VERSIONING.md`](VERSIONING.md) — cómo evoluciona todo lo anterior sin romper los compromisos ya adquiridos.
+- [`LEGAL_BASIS.md`](LEGAL_BASIS.md) — el marco jurídico costarricense específico que habilita al proyecto.
+- [`REFERENCES.md`](REFERENCES.md) — glosario, estándares adoptados y bibliografía.
+

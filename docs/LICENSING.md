@@ -55,13 +55,15 @@ Las contribuciones al repositorio principal de Plaza se aceptan bajo los términ
 
 ### Qué cubre
 
-El **corpus estructurado** producido por Plaza — la representación organizada, versionada, interrelacionada y anotada del derecho costarricense — se distribuye bajo CC BY-SA 4.0. Esto incluye los snapshots en todos sus formatos (RDF, JSON-LD, Akoma Ntoso XML, SQLite), la estructura del grafo, los vocabularios controlados propios del proyecto, y las anotaciones interpretativas.
+El **corpus estructurado** publicado por Plaza se distribuye bajo CC BY-SA 4.0. Esto incluye los snapshots en todos sus formatos (RDF, JSON-LD, Akoma Ntoso XML, SQLite), la estructura del grafo, los vocabularios controlados propios del proyecto, las anotaciones interpretativas, la metadata de procedencia, los identificadores canónicos, y los textos normativos incorporados fielmente al corpus como parte integrante del mismo.
 
-### Qué no cubre (importante)
+### Base jurídica para la redistribución de textos oficiales
 
-Los **textos normativos originales** — el texto de las leyes, decretos, reglamentos y demás normas emitidas por el Estado costarricense — no son propiedad intelectual de Plaza y no están cubiertos por esta licencia. Esos textos son obra del Estado costarricense, sujetos al régimen legal costarricense de información pública. Plaza los contiene como citas textuales necesarias para representar el corpus, con atribución a sus fuentes oficiales (SCIJ/PGR, La Gaceta, etc.).
+Los textos normativos oficiales costarricenses — constituciones, leyes, decretos, reglamentos, acuerdos municipales, sentencias judiciales — son de libre reproducción bajo el régimen costarricense de reproducción de actos oficiales, con la única carga de ajustarse estrictamente a la edición oficial. Plaza opera íntegramente dentro de este régimen: redistribuye los textos con fidelidad y con atribución explícita a las fuentes oficiales (SCIJ/PGR, La Gaceta/Imprenta Nacional, Poder Judicial, etc.), pero no requiere — ni ha requerido nunca — licencia específica de esas instituciones para incorporarlos al corpus.
 
-La distinción importa: CC BY-SA 4.0 aplica a cómo Plaza **organiza, estructura, relaciona, y anota** la normativa. No aplica al contenido literal de las leyes en sí, porque Plaza no es su autor.
+La licencia CC BY-SA 4.0 se aplica al corpus como **obra derivada estructurada**: la organización, la estructura, las relaciones, los identificadores canónicos, las anotaciones, y el conjunto de los textos incorporados como unidad citable. Un consumidor que descargue un snapshot de Plaza recibe, bajo los términos de CC BY-SA 4.0, tanto el aparato estructural como los textos normativos organizados dentro de él.
+
+Para el respaldo jurídico completo de esta base, incluyendo los artículos específicos del ordenamiento costarricense que la sustentan, ver [`LEGAL_BASIS.md`](LEGAL_BASIS.md).
 
 ### Por qué CC BY-SA y no CC BY
 
@@ -83,7 +85,7 @@ Construir aplicaciones, dashboards, interfaces, o análisis **sobre** el corpus 
 
 ### Compatibilidad con fuentes oficiales
 
-Las fuentes oficiales costarricenses de las que Plaza se alimenta publican sus sitios bajo licencias abiertas compatibles: la PGR declara CC BY 4.0 en el pie de su portal, la Imprenta Nacional publica La Gaceta bajo CC BY 4.0, y el TSE usa CC BY-SA 4.0. CC BY-SA 4.0 es compatible con CC BY 4.0 (se puede combinar material CC BY 4.0 con material CC BY-SA 4.0 bajo CC BY-SA 4.0), por lo que el modelo de Plaza honra a sus fuentes sin imponer obligaciones incompatibles.
+Las fuentes oficiales costarricenses de las que Plaza se alimenta operan bajo regímenes jurídicos compatibles con la apertura que Plaza exige: los textos normativos bajo el régimen de libre reproducción de actos oficiales, y los datos complementarios bajo licencias abiertas explícitamente declaradas por cada institución (típicamente CC BY 4.0 o CC BY-SA 4.0). CC BY-SA 4.0 es compatible con CC BY 4.0 en la dirección de absorción (material CC BY puede incorporarse a obras CC BY-SA), por lo que el modelo de Plaza honra a sus fuentes sin imponer obligaciones incompatibles. Para el detalle del régimen aplicable a cada institución fuente, ver [`LEGAL_BASIS.md`](LEGAL_BASIS.md).
 
 ---
 
@@ -213,3 +215,5 @@ Este documento se lee junto con:
 - [`ACCESS_SURFACES.md`](ACCESS_SURFACES.md) — define las superficies sobre las cuales aplica la licencia de datos.
 - [`SCOPE.md`](SCOPE.md) — establece qué forma parte del corpus cubierto.
 - [`VERSIONING.md`](VERSIONING.md) — define cómo se versionan los snapshots publicados bajo esta licencia.
+- [`LEGAL_BASIS.md`](LEGAL_BASIS.md) — el respaldo jurídico concreto del régimen de reproducción de textos oficiales y de la compatibilidad con licencias de instituciones fuente.
+- [`REFERENCES.md`](REFERENCES.md) — glosario y bibliografía para los términos jurídicos y de licenciamiento usados en este documento.

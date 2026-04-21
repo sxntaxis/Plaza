@@ -66,13 +66,13 @@ Las posiciones dentro de las instituciones como entidades abstractas — "Minist
 
 Identificar a las personas específicas que ocupan cargos públicos, con períodos de ocupación, evidencia de nombramiento, y autoridad que nombró o removió. Requiere el marco de gobernanza más riguroso del proyecto entero.
 
-**Criterio de incorporación**: capa de cargos estable, fuentes oficiales de nombramientos, marco explícito de privacidad y rectificación, y decisión colectiva del proyecto de que el beneficio justifica la sensibilidad. Puede no ocurrir nunca, y eso es legítimo.
+**Criterio de incorporación**: capa de cargos estable, fuentes oficiales de nombramientos, marco explícito de privacidad y rectificación, justificación jurídica escrita de que la finalidad de transparencia normativa de Plaza es consistente con la finalidad original con la que los datos fueron publicados por la institución correspondiente, y decisión colectiva del proyecto de que el beneficio justifica la sensibilidad. Puede no ocurrir nunca, y eso es legítimo. El respaldo jurídico aplicable está en [`LEGAL_BASIS.md`](LEGAL_BASIS.md).
 
 ### Corpus completo de jurisprudencia
 
 El acervo del Poder Judicial — sentencias, votos constitucionales — como corpus estructurado propio con versioning y relaciones internas, no solo como hooks desde normas. Interoperaría con el corpus normativo pero tiene su propia lógica institucional.
 
-**Criterio de incorporación**: corpus normativo maduro, y acuerdo o capacidad técnica sostenible con el Poder Judicial o Nexus-PJ.
+**Criterio de incorporación**: corpus normativo maduro, y convenio formal con el Poder Judicial que autorice explícitamente el procesamiento estructurado de jurisprudencia. El marco regulatorio actual del Poder Judicial en materia de datos personales prohíbe expresamente la construcción de bases paralelas mediante herramientas automatizadas, por lo que la vía del convenio es la única jurídicamente viable. Ver [`LEGAL_BASIS.md`](LEGAL_BASIS.md) para el respaldo jurídico detallado.
 
 ### Corpus completo de pronunciamientos PGR
 
@@ -143,3 +143,6 @@ El alcance descrito en este documento corresponde a Plaza el lunes 20 de abril d
 - [`DATA_MODEL.md`](DATA_MODEL.md) — el modelo semántico de las entidades que el alcance actual incluye.
 - [`QUALITY_AND_VALIDATION.md`](QUALITY_AND_VALIDATION.md) — los criterios de calidad aplicables a las entidades dentro del alcance.
 - [`VERSIONING.md`](VERSIONING.md) — cómo se versiona este documento cuando el alcance evoluciona.
+- [`LEGAL_BASIS.md`](LEGAL_BASIS.md) — el respaldo jurídico concreto para los criterios de incorporación que involucran datos sensibles o instituciones con regímenes específicos.
+- [`REFERENCES.md`](REFERENCES.md) — glosario, estándares y bibliografía.
+

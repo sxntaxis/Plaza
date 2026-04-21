@@ -229,7 +229,7 @@ Un consumidor que se apoya en el contrato está a salvo indefinidamente. Un cons
 
 ## Versionado de políticas públicas
 
-Los documentos que gobiernan Plaza — este documento, VISION, PRINCIPLES, SCOPE, URI_POLICY, ACCESS_SURFACES, LICENSING, ARCHITECTURE, DATA_MODEL, QUALITY_AND_VALIDATION — también se versionan.
+Los documentos que gobiernan Plaza — este documento, VISION, PRINCIPLES, SCOPE, URI_POLICY, ACCESS_SURFACES, LICENSING, LEGAL_BASIS, ARCHITECTURE, DATA_MODEL, QUALITY_AND_VALIDATION, REFERENCES — también se versionan.
 
 ### Formato: Semver aplicado a documentos
 

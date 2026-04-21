@@ -29,11 +29,11 @@ Esto impone disciplina en el momento de diseñar los identificadores — deben s
 
 ## 3. Fuentes oficiales como autoridad
 
-Las instituciones del Estado costarricense — la Procuraduría General, la Imprenta Nacional, el Poder Judicial, la Asamblea Legislativa — son las autoridades de los datos que Plaza representa. Plaza no las sustituye ni compite con ellas. Plaza es una representación estructurada de lo que ellas publican, construida con respeto por su autoridad institucional.
+Las instituciones del Estado costarricense — la Procuraduría General, la Imprenta Nacional, el Poder Judicial, la Asamblea Legislativa — son las autoridades emisoras de los datos que Plaza representa. Plaza no las sustituye ni compite con ellas. Plaza es una representación estructurada, al amparo del marco jurídico costarricense de reproducción de actos oficiales y de acceso a la información pública, de la normativa emitida por estos órganos.
 
-Cuando Plaza y una fuente oficial discrepan, la fuente oficial gana — Plaza se corrige. Toda afirmación en Plaza referencia explícitamente la fuente de la cual proviene.
+El respeto por la autoridad institucional se traduce en dos compromisos concretos: **fidelidad al texto oficial** (cuando Plaza y una fuente oficial discrepan, la fuente oficial gana — Plaza se corrige) y **atribución permanente de fuente** (toda afirmación en Plaza referencia explícitamente el origen oficial del cual proviene). Respetar la autoridad institucional no implica subordinación jurídica: Plaza ejerce un derecho con fundamento constitucional y legal, no solicita permiso para existir.
 
-**Cuándo se rompe:** cuando se presenta Plaza como fuente de verdad independiente en lugar de como representación de fuentes oficiales.
+**Cuándo se rompe:** cuando se presenta Plaza como fuente de verdad independiente en lugar de como representación de fuentes oficiales; o, en sentido opuesto, cuando se actúa como si Plaza necesitara autorización institucional para ejercer un derecho que el ordenamiento ya concede.
 
 ---
 
@@ -168,3 +168,6 @@ Este documento es el árbitro conceptual del proyecto. Los demás documentos del
 - [`DATA_MODEL.md`](DATA_MODEL.md) — implementación operativa del Principio 6 aplicado al grafo canónico.
 - [`QUALITY_AND_VALIDATION.md`](QUALITY_AND_VALIDATION.md) — implementación operativa de los Principios 1, 10 y 11 en la frontera de canonicalización.
 - [`VERSIONING.md`](VERSIONING.md) — implementación operativa del Principio 2 aplicado a la evolución temporal del proyecto.
+- [`LEGAL_BASIS.md`](LEGAL_BASIS.md) — el respaldo jurídico concreto de los Principios 3 (autoridad de fuentes oficiales) y 8 (ética en el modelado).
+- [`REFERENCES.md`](REFERENCES.md) — glosario, estándares y bibliografía que ancla el vocabulario de los principios.
+

@@ -187,7 +187,8 @@ Este documento evoluciona con el corpus fundacional. Cuando un nuevo concepto t�
 
 ## Relación con otras políticas
 
-- [`VISION.md`](VISION.md) — la visión que los estándares listados aquí permiten concretar.
+- [`VISION.md`](VISION.md) — la visión que los estándares listados aquí permiten concretar
+- [`LEGAL_BASIS.md`](LEGAL_BASIS.md) — el marco jurídico costarricense específico que habilita al proyecto.
 - [`PRINCIPLES.md`](PRINCIPLES.md) — especialmente el Principio 6 (Estándares internacionales como columna), del cual este documento es evidencia operativa.
 - [`SCOPE.md`](SCOPE.md) — define qué subset del ecosistema de estándares aplica al alcance actual.
 - [`URI_POLICY.md`](URI_POLICY.md) — usa ELI como patrón base de identificadores.

@@ -22,11 +22,11 @@ No es un sitio web. No es una aplicación. No es un buscador.
 
 La información jurídica costarricense es pública por mandato constitucional. Pero no es accesible en los términos que el siglo XXI exige.
 
-SCIJ, el sistema oficial, fue diseñado para que un humano lo navegue con un navegador web. No tiene API pública. No expone identificadores estables. No habla ningún estándar internacional de datos.
+SCIJ cumple su función histórica como navegador humano del corpus legal. Sus identificadores son estables, pero no son derivables programáticamente ni alineados con estándares internacionales de datos jurídicos. Para consultar la Ley 7092 por su número de ley, un sistema externo necesita primero consultar el propio SCIJ para descubrir sus parámetros internos — lo que rompe la interoperabilidad automática.
 
 Esta brecha tiene un costo concreto:
 
-> Cuando un asistente de IA hoy responde sobre derecho costarricense, lo hace desde memoria: puede estar desactualizado, puede alucinar un artículo, y nunca puede mostrar su fuente. El usuario no tiene cómo verificar. El abogado no puede citar. El ciudadano no puede confiar.
+> Cuando un asistente de IA hoy responde sobre derecho costarricense, usualmente lo hace desde conocimiento memorizado durante su entrenamiento: puede estar desactualizado, puede alucinar un artículo, y su capacidad de citar fuentes depende de si tiene acceso a retrieval sobre un corpus confiable. Ese corpus confiable, estructurado y citable no existe hoy para el derecho costarricense. Plaza es ese corpus.
 
 ---
 
@@ -161,7 +161,7 @@ Plaza no es un experimento costarricense. Es la manera costarricense de particip
 
 ## La constitución del proyecto
 
-Plaza se gobierna por once documentos fundacionales que establecen, con la rigurosidad de una constitución, qué es Plaza, cómo opera, y qué promete.
+Plaza se gobierna por doce documentos fundacionales que establecen, con la rigurosidad de una constitución, qué es Plaza, cómo opera, y qué promete.
 
 <table>
 <tr>
@@ -181,6 +181,7 @@ Plaza se gobierna por once documentos fundacionales que establecen, con la rigur
 - [**URI_POLICY**](docs/URI_POLICY.md) — identificadores permanentes
 - [**ACCESS_SURFACES**](docs/ACCESS_SURFACES.md) — cómo se consume
 - [**LICENSING**](docs/LICENSING.md) — términos de uso
+- [**LEGAL_BASIS**](docs/LEGAL_BASIS.md) — marco jurídico habilitante
 
 </td>
 <td width="33%" valign="top">
@@ -209,7 +210,7 @@ Plaza se gobierna por once documentos fundacionales que establecen, con la rigur
 
 Lo que existe hoy:
 
-- ✅ Los once documentos fundacionales, coherentes entre sí.
+- ✅ Los doce documentos fundacionales, coherentes entre sí.
 - ✅ Diseño del modelo semántico alineado a estándares internacionales.
 - ✅ Política de URIs permanentes completamente especificada.
 - ✅ Modelo de licenciamiento dual con mecanismo de sostenibilidad.
