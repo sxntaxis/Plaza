@@ -46,7 +46,7 @@ La afirmación resulta de inferencia, pero hay evidencia de ambigüedad o la fue
 
 ### Nivel 4 — Conflictivo o irresoluble
 
-Dos o más fuentes dan afirmaciones incompatibles sobre el mismo hecho, y Plaza no tiene criterio definitivo para elegir. Ejemplo: SCIJ declara una fecha de vigencia que no coincide con lo capturable desde La Gaceta.
+Dos o más fuentes dan afirmaciones incompatibles sobre el mismo hecho, y Plaza no tiene criterio definitivo para elegir. Ejemplo: SCIJ declara una fecha de vigencia que no coincide con lo adquirible desde La Gaceta.
 
 **Tratamiento**: no se canonicaliza una afirmación única. En su lugar se crea un `plaza:reconciliation_issue` que registra ambas evidencias, queda asociado a las entidades afectadas, y permanece hasta que se resuelva. La entidad puede canonicalizarse parcialmente — con los datos no conflictivos — y el issue queda como marcador de incompletud.
 
@@ -55,6 +55,45 @@ Dos o más fuentes dan afirmaciones incompatibles sobre el mismo hecho, y Plaza 
 ## Criterios de canonicalización
 
 Para que una entidad cruce la frontera de reconciliación hacia el grafo canónico, debe cumplir **todos** los criterios aplicables a su clase. Estos criterios son conjuntivos: un solo criterio incumplido impide la canonicalización.
+
+### Criterios jurídico-operacionales previos a la canonicalización
+
+Antes de evaluar una entidad por calidad semántica o estructural, Plaza debe poder responder cuatro preguntas:
+
+1. **¿La fuente está habilitada?**
+2. **¿La base jurídica o licencia de acceso y redistribución está determinada?**
+3. **¿La publicabilidad del material fue clasificada?**
+4. **¿Existen obligaciones adicionales de protección de datos o cumplimiento que deban satisfacerse antes de publicar?**
+
+Una entidad que falle cualquiera de estas preguntas no cruza la frontera hacia el grafo canónico público, aunque su estructura semántica sea técnicamente correcta.
+
+**C0 — Fuente habilitada.** La entidad debe provenir de una fuente cuya vía de acceso fue determinada y aprobada.
+
+**C0.1 — Base jurídica o licencia determinada.** La entidad debe tener un régimen de acceso y redistribución identificado con suficiente claridad.
+
+**C0.2 — Publicabilidad definida.** La entidad o conjunto de datos debe estar clasificado como publicable, publicable con restricciones, solo interno, o excluido.
+
+**C0.3 — Finalidad evaluada.** Cuando existan datos personales o incidentales relevantes, debe constar evaluación de finalidad y tratamiento.
+
+Para texto normativo oficial, metadata normativa y relaciones normativas, la compatibilidad de finalidad se presume positivamente salvo evidencia en contrario. Cuando existan datos personales o incidentales relevantes, la evaluación deja de ser presunta y pasa a ser obligatoria. Si la compatibilidad no es clara, el material no se trata como publicable por defecto: permanece como solo interno, publicable con reducción, o excluido, según corresponda.
+
+**C0.4 — Cumplimiento adicional resuelto.** Cuando la operación active obligaciones adicionales regulatorias o institucionales, estas deben estar satisfechas o la entidad permanece fuera del grafo público.
+
+## Nivel de autoridad documental de la fuente
+
+Plaza no trata todas las fuentes oficiales como equivalentes para todos los fines. Antes de canonicalizar o publicar una afirmación sensible sobre texto, vigencia, trazabilidad normativa o soporte documental, el sistema debe registrar qué tipo de autoridad documental respalda esa afirmación.
+
+Como mínimo, Plaza distingue tres niveles:
+
+- **Publicación oficial**: la afirmación se ancla en la publicación oficial del texto.
+- **Consolidación operativa oficial**: la afirmación se apoya en una fuente oficial de consulta y consolidación útil para navegación, relaciones normativas o texto actualizado.
+- **Certificación documental institucional**: la afirmación se apoya en una certificación o constancia formal emitida por la autoridad competente.
+
+Estos niveles no compiten entre sí. Cumplen funciones distintas y deben conservarse explícitamente en la procedencia.
+
+**C0.5 — Nivel de autoridad documental registrado.** Toda entidad o afirmación cuya confianza dependa del carácter de la fuente debe registrar si su respaldo corresponde a publicación oficial, consolidación operativa oficial, certificación documental institucional, o combinación explícita de ellas.
+
+**C0.6 — Claims no sobreafirmados.** Plaza no debe presentar una afirmación como certificada, auténtica o formalmente constatada si la procedencia disponible solo respalda publicación oficial o consolidación operativa.
 
 ### Criterios universales (aplican a toda entidad)
 
@@ -169,12 +208,21 @@ Un issue es una entidad del grafo operacional (no canónico) con al menos las si
 - `plaza:issue-orphan-reference`: una entidad referencia una URI que no existe en el corpus
 - `plaza:issue-temporal-inconsistency`: fechas que no cuadran (ej. derogación anterior a emisión)
 - `plaza:issue-shacl-violation`: la entidad viola el SHACL shape
+- `plaza:issue-unapproved-source`: la entidad proviene de una fuente no habilitada para publicación
+- `plaza:issue-unknown-redistribution-basis`: no está clara la base jurídica o licencia para redistribuir
+- `plaza:issue-purpose-mismatch`: el tratamiento proyectado no es consistente con la finalidad original
+- `plaza:issue-compliance-pending`: la operación requiere cumplimiento adicional antes de publicar
+- `plaza:issue-publication-restriction`: la entidad o conjunto no puede exponerse como corpus abierto en su forma actual
+- `plaza:issue-unknown-source-authority-level`: no está claro qué tipo de autoridad documental respalda la afirmación
+- `plaza:issue-overstated-documentary-authority`: la afirmación fue expresada con un nivel de autoridad documental superior al realmente respaldado por su procedencia
 
 ### Exposición pública de issues
 
 Los issues **no son parte del grafo canónico público**. Son parte del estado operacional. Sin embargo, Plaza publica estadísticas agregadas de issues como parte de los metadatos del corpus (ej. cuántos issues abiertos de cada tipo, porcentaje del corpus afectado), porque esa información es relevante para que los consumidores entiendan la calidad del corpus sin tener que inspeccionar cada entidad.
 
 Los snapshots incluyen un documento `corpus_health.json` que resume los estados de calidad sin exponer los issues individuales (que pueden contener información operacional sensible, rutas internas, etc.).
+
+Cuando una afirmación se publique hacia terceros, la procedencia debe poder expresar no solo de qué fuente vino, sino qué rol documental cumple esa fuente dentro del ecosistema jurídico correspondiente.
 
 ---
 

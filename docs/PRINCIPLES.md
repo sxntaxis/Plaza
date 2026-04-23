@@ -31,7 +31,7 @@ Esto impone disciplina en el momento de diseñar los identificadores — deben s
 
 Las instituciones del Estado costarricense — la Procuraduría General, la Imprenta Nacional, el Poder Judicial, la Asamblea Legislativa — son las autoridades emisoras de los datos que Plaza representa. Plaza no las sustituye ni compite con ellas. Plaza es una representación estructurada, al amparo del marco jurídico costarricense de reproducción de actos oficiales y de acceso a la información pública, de la normativa emitida por estos órganos.
 
-El respeto por la autoridad institucional se traduce en dos compromisos concretos: **fidelidad al texto oficial** (cuando Plaza y una fuente oficial discrepan, la fuente oficial gana — Plaza se corrige) y **atribución permanente de fuente** (toda afirmación en Plaza referencia explícitamente el origen oficial del cual proviene). Respetar la autoridad institucional no implica subordinación jurídica: Plaza ejerce un derecho con fundamento constitucional y legal, no solicita permiso para existir.
+El respeto por la autoridad institucional se traduce en dos compromisos concretos: **fidelidad al texto oficial** (cuando Plaza y una fuente oficial discrepan, la fuente oficial gana — Plaza se corrige) y **atribución permanente de fuente** (toda afirmación en Plaza referencia explícitamente el origen oficial del cual proviene). También implica disciplina en la vía de acceso: Plaza no presume que toda fuente pública deba adquirirse automáticamente, sino que prioriza la vía institucional o jurídica más sólida disponible para cada fuente. Respetar la autoridad institucional no implica subordinación jurídica: Plaza ejerce un derecho con fundamento constitucional y legal, no solicita permiso para existir.
 
 **Cuándo se rompe:** cuando se presenta Plaza como fuente de verdad independiente en lugar de como representación de fuentes oficiales; o, en sentido opuesto, cuando se actúa como si Plaza necesitara autorización institucional para ejercer un derecho que el ordenamiento ya concede.
 
@@ -39,7 +39,7 @@ El respeto por la autoridad institucional se traduce en dos compromisos concreto
 
 ## 4. Procedencia explícita y completa
 
-Cada afirmación que Plaza publica es trazable hasta su origen: la fuente oficial, la URL específica consultada, la fecha de captura, el artefacto preservado, la versión del proceso que produjo la interpretación.
+Cada afirmación que Plaza publica es trazable hasta su origen: la fuente oficial, la URL específica consultada, la fecha de adquisición, el artefacto preservado, la versión del proceso que produjo la interpretación.
 
 Esto permite que cualquier usuario — abogado, investigador, sistema de IA, auditor institucional — verifique no solo qué dice Plaza, sino por qué. Permite también que, cuando el procesamiento mejora, las afirmaciones anteriores puedan reevaluarse sin perder historia.
 
@@ -79,11 +79,13 @@ Esta separación es deliberada: las aplicaciones envejecen; los datos estructura
 
 ## 8. Ética en el modelado de entidades sensibles
 
-Cada vez que Plaza extiende su scope hacia un nuevo tipo de entidad — instituciones, cargos, funcionarios públicos, relaciones entre ellas — la extensión requiere un marco de gobernanza explícito proporcional a la sensibilidad de esa entidad.
+Cada vez que Plaza extiende su scope hacia un nuevo tipo de entidad — instituciones, cargos, y otras capas más cercanas al ejercicio del poder público — la extensión requiere un marco de gobernanza explícito proporcional a su sensibilidad.
 
-Modelar una ley es distinto a modelar una institución. Modelar una institución es distinto a modelar un cargo. Modelar un cargo es distinto a modelar a un funcionario público que lo ocupa. Cada nivel de cercanía a lo humano requiere mayor rigor en privacidad, en exactitud, en posibilidad de corrección, y en claridad sobre el propósito del modelado. Ninguna extensión hacia entidades más sensibles se hace por conveniencia o por completitud enciclopédica — se hace cuando existe un propósito claro, una fuente oficial que la respalde, y un marco explícito que la gobierne.
+Modelar una ley es distinto a modelar una institución. Modelar una institución es distinto a modelar un cargo. Cuando el funcionamiento del derecho público haga imprescindible representar quién ejercía oficialmente un cargo en un momento determinado, Plaza solo admite una representación estrictamente funcional y verificable de la **titularidad oficial del cargo**, basada en actos oficiales, limitada a trazabilidad institucional, responsabilidad pública y control democrático.
 
-**Cuándo se rompe:** cuando se agrega datos sobre personas como efecto secundario de otro objetivo, sin gobernanza explícita.
+Esto excluye, por diseño, el perfilado personal, la agregación biográfica abierta, las relaciones personales, los atributos ajenos al ejercicio del cargo, y cualquier incorporación de datos sobre personas privadas.
+
+**Cuándo se rompe:** cuando se agregan datos sobre personas como fin autónomo, o más allá de lo estrictamente necesario para representar el ejercicio verificable de una función pública.
 
 ---
 
@@ -107,7 +109,7 @@ No existen versiones "premium" del corpus de Plaza. No existen datos reservados 
 
 Plaza preserva evidencia suficiente para que cualquier conclusión pueda revisarse y regenerarse sin requerir una recaptura completa desde las fuentes. Los artefactos crudos son inmutables. Las interpretaciones son derivadas y revisables. Mezclar estas capas destruye la capacidad de corregir errores futuros.
 
-Si el procesamiento mejora, las capturas anteriores se reprocesan. Si un estándar evoluciona, las exportaciones se regeneran. Si un conflicto se resuelve, las reconciliaciones se reaplican.
+Si el procesamiento mejora, las adquisiciones anteriores se reprocesan. Si un estándar evoluciona, las exportaciones se regeneran. Si un conflicto se resuelve, las reconciliaciones se reaplican.
 
 **Cuándo se rompe:** cuando se sobrescriben datos crudos con datos "limpios" perdiendo la capacidad de reparsear.
 

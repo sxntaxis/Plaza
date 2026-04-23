@@ -19,8 +19,8 @@ Plaza procesa datos en cinco capas funcionales, cada una con un propósito disti
                               │
                               ▼
 ┌─────────────────────────────────────────────────────────────┐
-│ 1. Captura        (Acquisition)                             │
-│    Obtiene artefactos crudos, preserva evidencia inmutable  │
+│ 1. Adquisición    (Acquisition)                             │
+│    Obtiene artefactos o datos por la vía habilitada         │
 └─────────────────────────────────────────────────────────────┘
                               │
                               ▼
@@ -53,7 +53,7 @@ Plaza procesa datos en cinco capas funcionales, cada una con un propósito disti
 └─────────────────────────────────────────────────────────────┘
 ```
 
-Tres capas son **mutables y operacionales** (captura, refinamiento, reconciliación): aquí vive el trabajo en progreso, la incertidumbre, los conflictos no resueltos. Dos capas son **inmutables una vez publicadas** (canonicalización, publicación): aquí vive lo que Plaza le entrega al mundo, con las garantías de estabilidad definidas en las políticas públicas.
+Tres capas son **mutables y operacionales** (adquisición, refinamiento, reconciliación): aquí vive el trabajo en progreso, la incertidumbre, los conflictos no resueltos. Dos capas son **inmutables una vez publicadas** (canonicalización, publicación): aquí vive lo que Plaza le entrega al mundo, con las garantías de estabilidad definidas en las políticas públicas.
 
 La frontera entre las capas mutables y las inmutables — entre reconciliación y canonicalización — es la frontera más importante de esta arquitectura. Cruzar esa frontera requiere satisfacer todos los principios simultáneamente. Nada cruza silenciosamente; nada cruza sin evidencia.
 
@@ -67,7 +67,7 @@ Cada capa respeta restricciones arquitectónicas que derivan directamente de los
 |---|---|
 | 1 — Evidencia antes que inferencia | Cada afirmación en el grafo canónico tiene vínculo rastreable a al menos un artefacto crudo. |
 | 2 — Identidad permanente | Las URIs emitidas por la canonicalización nunca cambian. |
-| 3 — Fuentes oficiales como autoridad | La captura nunca modifica artefactos; preserva lo que la fuente dijo. |
+| 3 — Fuentes oficiales como autoridad | La adquisición nunca modifica artefactos; preserva lo que la fuente dijo y respeta la vía habilitada para accederlos. |
 | 4 — Procedencia explícita | PROV-O atraviesa todas las capas; cada entidad canónica carga su cadena de procedencia. |
 | 5 — Precisión temporal | Las versiones son entidades de primera clase en el grafo canónico, con URIs propias. |
 | 6 — Estándares como columna | El grafo canónico se expresa en ELI, Akoma Ntoso, schema.org/Legislation, PROV-O, SKOS, W3C ORG. Las capas operacionales pueden usar formatos internos, pero traducen a estándares al publicar. |
@@ -82,24 +82,41 @@ Los Principios 8 (Ética en el modelado de entidades sensibles) y 9 (Apertura po
 
 ## Las cinco capas
 
-### 1. Captura
+### Precondición: fuente habilitada
 
-**Responsabilidad**: obtener artefactos crudos de las fuentes oficiales y preservarlos de forma inmutable junto con su procedencia.
+Ninguna fuente entra a adquisición mientras Plaza no haya determinado, de forma explícita:
 
-**Entradas**: fuentes oficiales (SCIJ, Imprenta Nacional, Poder Judicial, etc.), accedidas según el protocolo que cada fuente permita (HTTP scraping respetuoso, feeds institucionales, acuerdos de acceso estructurado).
+- la base jurídica o licencia aplicable;
+- la vía de acceso preferente;
+- las restricciones específicas de la fuente;
+- la finalidad original o función pública bajo la cual la fuente fue publicada o recabada;
+- el uso previsto por Plaza sobre esa fuente;
+- el juicio de compatibilidad entre la finalidad original y el uso previsto;
+- si existen datos personales o incidentales relevantes;
+- si la fuente requiere convenio formal;
+- si la operación activa obligaciones adicionales de protección de datos o cumplimiento.
 
-**Salidas**: artefactos crudos con metadata de procedencia — URL original, timestamp de captura, hash del contenido, fuente, identidad de adquisición (el identificador que la fuente usa para referirse a este recurso: por ejemplo, los parámetros `nValor1:nValor2:nValor3` en SCIJ).
+La regla general de Plaza es jerárquica: primero publicación proactiva, luego solicitud formal, luego convenio, y solo de forma residual adquisición automatizada. La adquisición no decide esa vía; la ejecuta.
+
+### 1. Adquisición
+
+**Responsabilidad**: obtener artefactos o datos de las fuentes oficiales por la vía previamente habilitada, preservando evidencia inmutable junto con su procedencia y el contexto de acceso.
+
+**Entradas**: fuentes oficiales (SCIJ, Imprenta Nacional, Poder Judicial, etc.), accedidas según la vía habilitada para cada caso (publicación proactiva, respuesta a solicitud formal, entrega bajo convenio, feeds institucionales o adquisición automatizada respetuosa cuando corresponda).
+
+**Salidas**: artefactos crudos con metadata de procedencia — URL original cuando exista, vía de acceso utilizada, timestamp de captura o recepción, hash del contenido, fuente, identidad de adquisición (el identificador que la fuente usa para referirse a este recurso: por ejemplo, los parámetros `nValor1:nValor2:nValor3` en SCIJ).
 
 **Invariantes**:
 
-- Los artefactos son inmutables una vez capturados. Si una fuente cambia, se captura un nuevo artefacto con timestamp posterior; el anterior se preserva.
-- La captura nunca interpreta. No intenta identificar tipo de norma, no parsea texto, no asigna identidad canónica. Su única tarea es preservar fielmente lo que la fuente entregó.
-- Las distinciones operativas se preservan: un recurso no encontrado (404) no es lo mismo que una captura fallida (timeout) no es lo mismo que una página de error disfrazada (HTTP 200 con contenido de error). Cada estado se registra distintamente.
-- Las fuentes oficiales se acceden con discreción: tasas respetuosas, user-agent identificable, respeto a robots.txt donde aplique. La captura es un huésped en servidores ajenos.
+- Los artefactos son inmutables una vez adquiridos. Si una fuente cambia, se adquiere un nuevo artefacto con timestamp posterior; el anterior se preserva.
+- La adquisición nunca interpreta. No intenta identificar tipo de norma, no parsea texto, no asigna identidad canónica. Su única tarea es preservar fielmente lo que la fuente entregó.
+- Las distinciones operativas se preservan: un recurso no encontrado (404) no es lo mismo que una adquisición fallida (timeout) no es lo mismo que una página de error disfrazada (HTTP 200 con contenido de error). Cada estado se registra distintamente.
+- La adquisición nunca decide por sí sola usar automatización cuando existe una vía institucional o jurídica preferente mejor definida.
+- Las fuentes oficiales se acceden con discreción: tasas respetuosas, user-agent identificable, respeto a robots.txt donde aplique. La adquisición automatizada es un huésped en servidores ajenos.
 
-**Dependencias**: esta capa depende únicamente de las fuentes externas. No depende de ninguna otra capa de Plaza.
+**Dependencias**: esta capa depende únicamente de las fuentes externas ya habilitadas. No depende de ninguna otra capa de Plaza.
 
-**Sustituibilidad**: esta capa es la más específica por fuente. Cada fuente oficial requiere su propio módulo de captura con su propio conocimiento del protocolo. Agregar una fuente nueva (por ejemplo, el Digesto Tributario de Hacienda) requiere solo un módulo de captura nuevo — no toca las demás capas.
+**Sustituibilidad**: esta capa es la más específica por fuente. Cada fuente oficial requiere su propio módulo de adquisición con su propio conocimiento del canal habilitado. Agregar una fuente nueva (por ejemplo, el Digesto Tributario de Hacienda) requiere solo un módulo de adquisición nuevo — no toca las demás capas.
 
 ---
 
@@ -107,7 +124,7 @@ Los Principios 8 (Ética en el modelado de entidades sensibles) y 9 (Apertura po
 
 **Responsabilidad**: interpretar los artefactos crudos en datos estructurados, preservando la trazabilidad a la evidencia original.
 
-**Entradas**: artefactos crudos de la capa de captura, junto con su metadata de procedencia.
+**Entradas**: artefactos crudos de la capa de adquisición, junto con su metadata de procedencia.
 
 **Salidas**: datos estructurados específicos de la fuente. Para SCIJ, esto significa fichas parseadas, artículos identificados, relaciones extraídas (afectaciones, concordancias, reglamentaciones, descriptores, etc.), versiones detectadas, pistas de publicación capturadas. Para cada pieza de dato estructurado, un vínculo a la sección del artefacto crudo que la respalda.
 
@@ -118,9 +135,9 @@ Los Principios 8 (Ética en el modelado de entidades sensibles) y 9 (Apertura po
 - El refinamiento preserva texto crudo cuando la interpretación es incompleta. Mejor guardar el texto original de una celda ambigua que forzar una interpretación errónea.
 - El refinamiento es re-ejecutable. Si se mejora el parser, se reprocesan los artefactos crudos y se obtiene mejor dato sin volver a la fuente.
 
-**Dependencias**: depende de la capa de captura.
+**Dependencias**: depende de la capa de adquisición.
 
-**Sustituibilidad**: como la captura, esta capa es específica por fuente. Un parser SCIJ no sabe nada de La Gaceta ni viceversa.
+**Sustituibilidad**: como la adquisición, esta capa es específica por fuente. Un parser SCIJ no sabe nada de La Gaceta ni viceversa.
 
 ---
 
@@ -194,7 +211,7 @@ La arquitectura distingue tres clases de almacenamiento, cada una con un régime
 
 ### Almacén de artefactos crudos (inmutable)
 
-**Qué guarda**: los artefactos obtenidos por la capa de captura — típicamente HTML, JSON, PDF, o cualquier formato que la fuente oficial entregó — junto con su metadata de procedencia.
+**Qué guarda**: los artefactos obtenidos por la capa de adquisición — típicamente HTML, JSON, PDF, o cualquier formato que la fuente oficial entregó — junto con su metadata de procedencia.
 
 **Régimen**: inmutable. Una vez escrito, un artefacto crudo nunca se modifica. Si la fuente cambia, se escribe un nuevo artefacto con timestamp posterior.
 
@@ -228,15 +245,15 @@ La arquitectura distingue tres clases de almacenamiento, cada una con un régime
 
 Cada frontera entre capas tiene un contrato explícito.
 
-### Fuentes → Captura
+### Fuentes → Adquisición
 
-**Garantía de la captura hacia las fuentes**: respeto operacional. La captura se comporta como un huésped considerado: identifica su identidad, respeta tasas, no sobrecarga, acepta ser rechazada.
+**Garantía de Plaza hacia las fuentes**: respeto operacional y jurídico. La adquisición se comporta como un huésped considerado: identifica su identidad cuando corresponde, respeta tasas, no sobrecarga, acepta ser rechazada, y no trata toda fuente como scrapeable por defecto.
 
-**Garantía de las fuentes hacia la captura**: ninguna. Las fuentes oficiales operan según sus propias reglas. La captura debe tolerar disponibilidad variable, cambios de formato, errores intermitentes.
+**Garantía de las fuentes hacia la adquisición**: ninguna. Las fuentes oficiales operan según sus propias reglas. La adquisición debe tolerar disponibilidad variable, cambios de formato, errores intermitentes y canales de acceso heterogéneos.
 
-### Captura → Refinamiento
+### Adquisición → Refinamiento
 
-**Contrato**: el refinamiento recibe artefactos inmutables con metadata de procedencia completa. Nunca recibe datos ya interpretados.
+**Contrato**: el refinamiento recibe artefactos inmutables con metadata de procedencia completa, incluyendo la vía de acceso utilizada cuando sea relevante. Nunca recibe datos ya interpretados.
 
 ### Refinamiento → Reconciliación
 
@@ -264,7 +281,7 @@ La arquitectura está diseñada para admitir extensión sin refactoring:
 
 Agregar La Gaceta, el Digesto Tributario de Hacienda, o cualquier otra fuente oficial requiere:
 
-1. Un nuevo módulo de captura específico para la fuente.
+1. Un nuevo módulo de adquisición específico para la fuente.
 2. Un nuevo módulo de refinamiento específico para el formato de la fuente.
 3. Extensiones a los criterios de reconciliación para considerar evidencia de la nueva fuente.
 
@@ -296,7 +313,7 @@ Agregar, por ejemplo, un endpoint SPARQL (cuando el SCOPE lo permita) requiere:
 
 ### No es una pipeline lineal simple
 
-Aunque el flujo es principalmente descendente (captura → publicación), hay ciclos legítimos:
+Aunque el flujo es principalmente descendente (adquisición → publicación), hay ciclos legítimos:
 
 - La reconciliación puede solicitar nuevas capturas si descubre evidencia faltante.
 - El refinamiento puede re-ejecutarse sobre artefactos antiguos cuando mejora el parser.

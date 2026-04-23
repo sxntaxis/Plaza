@@ -55,7 +55,7 @@ Las contribuciones al repositorio principal de Plaza se aceptan bajo los términ
 
 ### Qué cubre
 
-El **corpus estructurado** publicado por Plaza se distribuye bajo CC BY-SA 4.0. Esto incluye los snapshots en todos sus formatos (RDF, JSON-LD, Akoma Ntoso XML, SQLite), la estructura del grafo, los vocabularios controlados propios del proyecto, las anotaciones interpretativas, la metadata de procedencia, los identificadores canónicos, y los textos normativos incorporados fielmente al corpus como parte integrante del mismo.
+El **corpus estructurado** publicado válidamente por Plaza se distribuye bajo CC BY-SA 4.0. Esto incluye los snapshots en todos sus formatos (RDF, JSON-LD, Akoma Ntoso XML, SQLite), la estructura del grafo, los vocabularios controlados propios del proyecto, las anotaciones interpretativas, la metadata de procedencia, los identificadores canónicos, y los textos normativos incorporados fielmente al corpus como parte integrante del mismo, en la medida en que su redistribución esté jurídicamente habilitada.
 
 ### Base jurídica para la redistribución de textos oficiales
 
@@ -85,7 +85,7 @@ Construir aplicaciones, dashboards, interfaces, o análisis **sobre** el corpus 
 
 ### Compatibilidad con fuentes oficiales
 
-Las fuentes oficiales costarricenses de las que Plaza se alimenta operan bajo regímenes jurídicos compatibles con la apertura que Plaza exige: los textos normativos bajo el régimen de libre reproducción de actos oficiales, y los datos complementarios bajo licencias abiertas explícitamente declaradas por cada institución (típicamente CC BY 4.0 o CC BY-SA 4.0). CC BY-SA 4.0 es compatible con CC BY 4.0 en la dirección de absorción (material CC BY puede incorporarse a obras CC BY-SA), por lo que el modelo de Plaza honra a sus fuentes sin imponer obligaciones incompatibles. Para el detalle del régimen aplicable a cada institución fuente, ver [`LEGAL_BASIS.md`](LEGAL_BASIS.md).
+Las fuentes oficiales costarricenses de las que Plaza se alimenta no operan bajo un régimen uniforme. Plaza incorpora como corpus abierto solo aquellas fuentes para las cuales existe una base jurídica o licencia compatible suficientemente determinada: los textos normativos bajo el régimen de libre reproducción de actos oficiales, y los datos complementarios bajo licencias abiertas explícitamente declaradas por cada institución cuando sean compatibles con la apertura del proyecto. CC BY-SA 4.0 es compatible con CC BY 4.0 en la dirección de absorción (material CC BY puede incorporarse a obras CC BY-SA), pero esa compatibilidad no neutraliza restricciones institucionales, regulatorias o contractuales de origen. Para el detalle del régimen aplicable a cada institución fuente, ver [`LEGAL_BASIS.md`](LEGAL_BASIS.md).
 
 ---
 
@@ -154,9 +154,9 @@ El inventario de dependencias con sus licencias se mantiene en un documento oper
 
 ### Fuentes de datos
 
-Plaza solo incorpora datos de fuentes que permiten redistribución bajo términos compatibles con CC BY-SA 4.0. Las fuentes oficiales costarricenses ya identificadas (PGR, Imprenta Nacional, TSE) cumplen este criterio.
+Plaza solo redistribuye como corpus abierto aquello para lo cual existe una base jurídica o licencia compatible suficientemente determinada. Cuando una fuente permita consulta o referencia pero no una redistribución abierta del material completo, Plaza puede limitarse a exponer metadata, hooks o referencias, o excluirla del corpus redistribuido.
 
-Si en el futuro se considera incorporar una fuente con términos menos compatibles (por ejemplo, CC BY-NC que prohíbe uso comercial, o licencias propietarias), el proyecto analiza caso por caso si esa fuente puede ser representada bajo un régimen diferenciado (por ejemplo, solo como referencia sin redistribución) o si se excluye. La apertura de Plaza es prioritaria sobre la completitud del corpus.
+Si en el futuro se considera incorporar una fuente con términos menos compatibles (por ejemplo, CC BY-NC que prohíbe uso comercial, o licencias propietarias), el proyecto analiza caso por caso si esa fuente puede ser representada bajo un régimen diferenciado o si se excluye. La licencia de Plaza se aplica al código y al corpus que Plaza puede publicar válidamente; no convierte por sí sola en redistribuible cualquier material de origen incompatible o jurídicamente no resuelto.
 
 ---
 

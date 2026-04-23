@@ -88,7 +88,13 @@ El artículo 9.3 excluye de la categoría "irrestricto" a ciertos datos aunque s
 
 El principio de finalidad (artículo 3.c y art. 5) es el eje jurídico más importante para cualquier tratamiento de datos en Costa Rica. La **Resolución PRODHAB 697-2023** lo aplicó en un caso muy similar al tipo de decisión que Plaza puede enfrentar: estableció que los datos de una entidad no pueden ser tomados por otra para convertirlos en parte de otra base si no se respeta la finalidad original.
 
-**Implicación para Plaza:** si el alcance del proyecto se extiende eventualmente a modelar funcionarios públicos, el proyecto deberá justificar explícitamente — por escrito, antes de implementar — que la finalidad de transparencia normativa de Plaza es consistente con la finalidad original con la que los datos fueron publicados por la institución correspondiente. Este requisito está codificado en `SCOPE.md`.
+**Implicación para Plaza:** si en algún contexto extraordinario resultara estrictamente necesario representar la titularidad oficial de un cargo público a partir de actos oficiales verificables, el proyecto deberá justificar explícitamente — por escrito, antes de implementar — que esa representación funcional y limitada es consistente con la finalidad original con la que los datos fueron publicados por la institución correspondiente. Este requisito está codificado en `SCOPE.md`.
+
+### Test operativo de compatibilidad de finalidad
+
+En Plaza, la finalidad no se evalúa solo cuando aparece una entidad humana sensible. Se evalúa cada vez que el proyecto pretende hacer algo más que reproducir fielmente un acto público normativo. La regla operativa es por clase de fuente y por tipo de transformación, no por ocurrencia aislada.
+
+Por defecto, se presume compatible la **reproducción fiel de textos normativos oficiales**, la **estructuración de metadata normativa**, y la **representación de relaciones normativas** necesarias para trazabilidad, vigencia e interoperabilidad. No se presume compatible, en cambio, la **extracción estructurada de datos personales o incidentales**, ni la **agregación o cruce de información** que cambie materialmente el uso práctico para el cual la fuente fue publicada. Cuando la compatibilidad no sea clara, la salida por defecto no es publicar igual, sino reducir, excluir, o mantener el material fuera del corpus abierto hasta resolver la evaluación.
 
 ### Tratamiento aplicable a textos normativos
 
@@ -96,11 +102,25 @@ Los textos normativos oficiales **no son datos personales** en sentido propio. S
 
 1. **Preservación sin extracción estructurada**: los nombres que aparecen en textos oficiales se preservan como parte del texto (es cita textual de un documento público), pero no se extraen como datos estructurados ni se convierten en entidades del grafo. Esta decisión está codificada en `SCOPE.md` y en el Principio 8 de `PRINCIPLES.md`.
 
-2. **Criterio de incorporación con gobernanza**: cualquier extensión futura hacia modelado de funcionarios requiere gobernanza explícita proporcional a la sensibilidad de los datos, incluida justificación jurídica escrita de consistencia con la finalidad original.
+2. **Criterio de incorporación con gobernanza**: cualquier extensión futura hacia la representación funcional de titularidad oficial de cargos públicos requiere gobernanza explícita proporcional a la sensibilidad de los datos, incluida justificación jurídica escrita de consistencia con la finalidad original.
+
+La eventual representación de titularidad oficial de cargos públicos no se entiende en Plaza como perfilado de personas, sino como reconstrucción limitada de un hecho institucional verificable: qué cargo existía, quién lo ejercía oficialmente, en qué período y con base en cuál acto oficial. Su justificación, de existir, sería exclusivamente de trazabilidad institucional, responsabilidad pública y control democrático.
 
 ### Autoridad regulatoria
 
 **PRODHAB** tiene competencia para conocer denuncias, ordenar medidas cautelares, y sancionar infracciones con hasta 30 salarios base. Desde el voto **8405-2021**, la vía de PRODHAB desplaza al amparo como procedimiento preferente en materia de protección de datos.
+
+### Triggers operativos para Plaza
+
+Plaza no presume que toda operación active obligaciones registrales o procedimentales ante PRODHAB, pero sí reconoce que ciertas operaciones pueden hacerlo. Cuando Plaza administre bases con datos personales o incidentales relevantes, especialmente con fines de difusión pública, debe evaluarse expresamente, según corresponda:
+
+- la compatibilidad de finalidad;
+- la necesidad de anonimización o pseudonimización irreversible;
+- la adopción de protocolo de actuación;
+- la eventual inscripción de la base o fichero;
+- los mecanismos de rectificación, supresión y atención de reclamos.
+
+La presencia de texto público no elimina por sí sola las obligaciones derivadas del tratamiento posterior de datos personales.
 
 ---
 
@@ -119,7 +139,7 @@ Costa Rica ratificó el **Convenio de Budapest sobre Ciberdelincuencia** mediant
 **Consecuencia para Plaza:** el proyecto opera íntegramente dentro del espacio no tipificado. Plaza:
 
 - No accede a sistemas sin autorización: opera sobre información publicada abiertamente por instituciones oficiales, o solicita datos mediante vías formales.
-- No entorpece ni sabotea sistemas: cualquier captura automatizada respeta `robots.txt`, términos de uso, y aplica tasas conservadoras.
+- No entorpece ni sabotea sistemas: cualquier adquisición automatizada respeta `robots.txt`, términos de uso, y aplica tasas conservadoras.
 - No manipula sistemas con fin económico: el proyecto es de código abierto, sin ánimo de lucro directo.
 - No evade controles técnicos: no rompe captchas, no se autentica como otro, no suplanta identidades.
 
@@ -136,8 +156,8 @@ Plaza trabaja con datos publicados por instituciones del Estado costarricense ba
 | **PGR – SINALEVI/SCIJ** | pgrweb.go.cr | Art. 75 Ley 6683: reproducción libre con fidelidad al texto oficial. | Fuente primaria de normativa costarricense. |
 | **Imprenta Nacional – La Gaceta** | imprentanacional.go.cr | Art. 75 Ley 6683 para los textos publicados. Términos de uso del sitio para elementos editoriales. | Diario oficial de publicación obligatoria. |
 | **TSE** | tse.go.cr | CC BY-SA 4.0 Internacional (declarada). | No aplica a padrón electoral ni datos sensibles. |
-| **Asamblea Legislativa** | asamblea.go.cr | Art. 75 Ley 6683 para textos de ley; términos de uso para expedientes parlamentarios. | — |
-| **Poder Judicial – Nexus** | nexuspj.poder-judicial.go.cr | Reglamento Corte Plena sesión 33-2024: prohíbe construir bases paralelas con herramientas robotizadas o IA. | Requiere convenio formal para procesamiento estructurado. |
+| **Asamblea Legislativa** | asamblea.go.cr | Art. 75 Ley 6683 para textos de ley; términos de uso para expedientes parlamentarios. | Además de su valor como fuente legislativa primaria, puede ser relevante cuando la cuestión requiere certificación documental institucional y no solo consulta o consolidación. |
+| **Poder Judicial – Nexus** | nexuspj.poder-judicial.go.cr | Reglamento Corte Plena sesión 33-2024: prohíbe construir bases paralelas con herramientas robotizadas o IA. | Requiere convenio formal para procesamiento estructurado; no forma parte del flujo ordinario publicable de Plaza. |
 | **CGR** | cgr.go.cr | CC BY-SA 4.0 (declarada en portal de datos abiertos). | — |
 | **Archivo Nacional** | archivonacional.go.cr | CC BY-SA (declarada). | — |
 
@@ -168,9 +188,39 @@ El derecho costarricense admite cuatro vías de obtención de datos gubernamenta
 
 3. **Convenio interinstitucional**: para flujos sostenidos o datos sensibles. Es la única vía viable para jurisprudencia del Poder Judicial.
 
-4. **Captura automatizada respetuosa**: reservada para datos voluminosos ya publicados abiertamente bajo régimen compatible (art. 75 Ley 6683 o licencia CC abierta), con respeto estricto a `robots.txt`, términos de uso, tasas razonables, user-agent identificable, y sin evasión de controles técnicos.
+4. **Adquisición automatizada respetuosa**: reservada para datos voluminosos ya publicados abiertamente bajo régimen compatible (art. 75 Ley 6683 o licencia CC abierta), con respeto estricto a `robots.txt`, términos de uso, tasas razonables, user-agent identificable, y sin evasión de controles técnicos.
 
-Plaza prioriza las vías en ese orden. La captura automatizada es complementaria, no central.
+Plaza prioriza las vías en ese orden. La adquisición automatizada es complementaria, no central, y no define la identidad del proyecto.
+
+| Tipo de fuente | Régimen principal | Vía preferente | Observación |
+|---|---|---|---|
+| Textos normativos oficiales | Art. 75 Ley 6683 + acceso público | Reproducción fiel / descarga / solicitud formal si hace falta | No requiere permiso para existir, pero sí fidelidad al texto oficial |
+| Datos abiertos con licencia explícita | Licencia publicada por la institución | Descarga directa conforme a licencia | Verificar compatibilidad con redistribución abierta |
+| Información pública no publicada proactivamente | Arts. 27 y 30 + Ley 10554 | Solicitud formal | Preferente frente a automatización masiva |
+| Jurisprudencia o fuentes con restricción institucional especial | Régimen específico de la institución | Convenio o canal formal | No se trata como scrapeable por defecto |
+| Fuentes con datos personales o incidentales | Ley 8968 + reglamento + finalidad | Caso por caso | Requiere evaluación de finalidad, minimización y posible anonimización |
+
+## Roles documentales distintos dentro del ecosistema legislativo
+
+Para efectos de Plaza, no toda fuente oficial cumple la misma función documental, aunque varias sean autoridades públicas legítimas.
+
+En particular, conviene distinguir al menos tres roles:
+
+- **Publicación oficial**: la publicación en el Diario Oficial La Gaceta ancla la existencia pública y la publicación oficial del texto normativo.
+- **Consolidación operativa**: sistemas como SCIJ/SINALEVI son especialmente valiosos para consulta, actualización consolidada, relaciones entre normas, afectaciones, concordancias y navegación estructurada.
+- **Certificación documental institucional**: cuando la cuestión jurídica exige una certificación o constancia documental formal, Plaza no presume que toda fuente oficial tenga esa competencia. Esa función debe atribuirse al órgano que efectivamente la tenga conforme al régimen institucional aplicable.
+
+La consecuencia práctica es importante: Plaza puede apoyarse en varias fuentes oficiales al mismo tiempo, pero sin colapsar sus funciones. Un texto publicado oficialmente, un texto consolidado operativamente y un documento certificable no son necesariamente la misma cosa ni provienen del mismo órgano.
+
+### Aplicación práctica para leyes
+
+En el caso de las leyes, Plaza distingue entre:
+
+- el **texto publicado oficialmente** en La Gaceta;
+- el **texto consolidado** y sus relaciones normativas en SCIJ/SINALEVI;
+- la eventual **certificación documental** emitida por la autoridad legislativa competente.
+
+Plaza no usa la palabra **certificado** salvo que exista efectivamente una certificación emitida por la autoridad competente. En ausencia de esa certificación, el proyecto puede afirmar —según corresponda— que un texto fue publicado oficialmente, o que fue obtenido de una fuente oficial de consolidación, pero no que constituye por sí mismo una certificación formal.
 
 ---
 
@@ -184,7 +234,7 @@ Plaza opera con respaldo jurídico sólido. Cada aspecto del proyecto encuentra 
 - **Su licenciamiento** respeta y hereda los regímenes declarados por cada institución fuente.
 - **Su operación técnica** queda íntegramente dentro del espacio no tipificado por la Ley 9048.
 
-No hay, en la operación actual ni prevista de Plaza, zona gris jurídica relevante. Donde existe incertidumbre — típicamente en la frontera entre datos públicos y datos personales — Plaza aplica el criterio más garantista: codifica la duda como regla de exclusión, no como licencia de inclusión.
+El espacio jurídico en el que Plaza opera no es un vacío: es un marco delimitado con zonas de riesgo identificables. Donde existe incertidumbre — típicamente en la frontera entre datos públicos y datos personales, o entre acceso permitido y redistribución abierta — Plaza aplica el criterio más garantista: codifica la duda como regla de exclusión, no como licencia de inclusión.
 
 ---
 

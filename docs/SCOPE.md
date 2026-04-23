@@ -8,7 +8,7 @@ El propósito es doble: proteger al proyecto del scope creep — la tendencia a 
 
 ## En alcance actual
 
-Plaza modela el **corpus normativo costarricense** como grafo estructurado, citable y verificable, distribuido como producto híbrido de snapshots descargables y servicios en vivo.
+Plaza modela el **corpus normativo costarricense** como grafo estructurado, citable y verificable, distribuido como producto híbrido de snapshots descargables y servicios en vivo. La capacidad de adquisición automatizada existe, pero no define la identidad del proyecto: Plaza prioriza publicación proactiva, solicitud formal y convenio antes que automatización residual.
 
 ### Entidades canónicas
 
@@ -26,6 +26,7 @@ Plaza modela el **corpus normativo costarricense** como grafo estructurado, cita
 
 ### Referencias externas
 
+- **Registro de habilitación de fuentes**: para cada fuente incorporada, Plaza documenta su vía de acceso, régimen jurídico o licencia, restricciones relevantes, finalidad original o función pública de la fuente, uso previsto por Plaza, juicio de compatibilidad, y condición de publicabilidad.
 - **Pistas de publicación**: referencias a La Gaceta donde una norma fue publicada oficialmente, tal como las expone SCIJ — sin verificación cruzada con el feed oficial de La Gaceta.
 - **Hooks a pronunciamientos de la PGR**: referencias a dictámenes que interpretan las normas, sin incluir el corpus completo de pronunciamientos.
 - **Hooks a acciones constitucionales**: referencias a votos de la Sala Constitucional que afectan normas, sin incluir el corpus completo de jurisprudencia.
@@ -46,9 +47,9 @@ Estas áreas son reconocidas como extensiones naturales del proyecto. Su exclusi
 
 ### Reconciliación con La Gaceta
 
-Hoy Plaza tiene pistas de publicación capturadas de SCIJ. Lo que no tiene es verificación cruzada con el feed oficial de La Gaceta publicado por la Imprenta Nacional. Esa reconciliación convierte pistas en hechos verificados y habilita la pregunta "¿cuándo entró realmente en vigor esta norma?" con autoridad completa.
+Hoy Plaza tiene pistas de publicación obtenidas de SCIJ. Lo que no tiene es verificación cruzada con el feed oficial de La Gaceta publicado por la Imprenta Nacional. Esa reconciliación convierte pistas en hechos verificados y habilita la pregunta "¿cuándo entró realmente en vigor esta norma?" con autoridad completa.
 
-**Criterio de incorporación**: acuerdo de acceso con la Imprenta Nacional, o captura estructurada sostenible del archivo público de La Gaceta.
+**Criterio de incorporación**: acuerdo de acceso con la Imprenta Nacional, acceso estructurado sostenible al archivo público de La Gaceta, o solo subsidiariamente adquisición estructurada del archivo público bajo un régimen jurídicamente compatible.
 
 ### Capa institucional
 
@@ -62,17 +63,27 @@ Las posiciones dentro de las instituciones como entidades abstractas — "Minist
 
 **Criterio de incorporación**: capa institucional estable, y fuentes oficiales para la definición de cargos, típicamente las leyes orgánicas que los crean.
 
-### Capa de funcionarios públicos
+### Titularidad oficial de cargos públicos
 
-Identificar a las personas específicas que ocupan cargos públicos, con períodos de ocupación, evidencia de nombramiento, y autoridad que nombró o removió. Requiere el marco de gobernanza más riguroso del proyecto entero.
+Si una capa institucional futura necesitara responder quién ejercía oficialmente un cargo público en una fecha determinada, Plaza solo podría representar la **titularidad oficial del cargo** a partir de actos oficiales de nombramiento, remoción, sustitución o designación.
 
-**Criterio de incorporación**: capa de cargos estable, fuentes oficiales de nombramientos, marco explícito de privacidad y rectificación, justificación jurídica escrita de que la finalidad de transparencia normativa de Plaza es consistente con la finalidad original con la que los datos fueron publicados por la institución correspondiente, y decisión colectiva del proyecto de que el beneficio justifica la sensibilidad. Puede no ocurrir nunca, y eso es legítimo. El respaldo jurídico aplicable está en [`LEGAL_BASIS.md`](LEGAL_BASIS.md).
+Esa representación no constituye un perfil de la persona. Su finalidad sería exclusivamente institucional: preservar trazabilidad del ejercicio del cargo, continuidad administrativa, responsabilidad pública y control democrático.
+
+Quedan fuera de esa lógica:
+- la construcción de perfiles personales;
+- la agregación biográfica general;
+- las relaciones personales o sociales;
+- atributos no funcionales;
+- inferencias sobre conducta, afinidades o motivaciones;
+- y cualquier modelado de personas privadas.
+
+**Criterio de incorporación**: capa de cargos estable, actos oficiales verificables, marco explícito de privacidad y rectificación, justificación jurídica escrita de consistencia con la finalidad original de los datos publicados por la institución correspondiente, evaluación explícita del régimen de protección de datos aplicable, y decisión colectiva del proyecto de que la representación es estrictamente necesaria para la trazabilidad institucional. Puede no ocurrir nunca, y eso es legítimo. El respaldo jurídico aplicable está en [`LEGAL_BASIS.md`](LEGAL_BASIS.md).
 
 ### Corpus completo de jurisprudencia
 
 El acervo del Poder Judicial — sentencias, votos constitucionales — como corpus estructurado propio con versioning y relaciones internas, no solo como hooks desde normas. Interoperaría con el corpus normativo pero tiene su propia lógica institucional.
 
-**Criterio de incorporación**: corpus normativo maduro, y convenio formal con el Poder Judicial que autorice explícitamente el procesamiento estructurado de jurisprudencia. El marco regulatorio actual del Poder Judicial en materia de datos personales prohíbe expresamente la construcción de bases paralelas mediante herramientas automatizadas, por lo que la vía del convenio es la única jurídicamente viable. Ver [`LEGAL_BASIS.md`](LEGAL_BASIS.md) para el respaldo jurídico detallado.
+**Criterio de incorporación**: corpus normativo maduro, y convenio formal con el Poder Judicial que autorice explícitamente el procesamiento estructurado de jurisprudencia. Mientras ese convenio no exista, la jurisprudencia estructurada del Poder Judicial no forma parte de la operación ordinaria publicable de Plaza. El marco regulatorio actual del Poder Judicial en materia de datos personales prohíbe expresamente la construcción de bases paralelas mediante herramientas automatizadas, por lo que la vía del convenio es la única jurídicamente viable. Ver [`LEGAL_BASIS.md`](LEGAL_BASIS.md) para el respaldo jurídico detallado.
 
 ### Corpus completo de pronunciamientos PGR
 
@@ -96,11 +107,17 @@ Plaza no interpreta, no predice, no razona sobre el derecho. Plaza representa. L
 
 ### Modelado de ciudadanos privados
 
-Plaza no identifica ni modela personas privadas, ni siquiera cuando aparezcan mencionadas en textos normativos. Los nombres en textos oficiales se preservan como parte del texto — es una cita textual de un documento público — pero nunca se extraen como datos estructurados ni se convierten en entidades del grafo. La distinción entre funcionarios públicos (que eventualmente podrían entrar con gobernanza) y ciudadanos privados (que nunca) es dura.
+Plaza no identifica ni modela personas privadas, ni siquiera cuando aparezcan mencionadas en textos normativos. Los nombres en textos oficiales se preservan como parte del texto — es una cita textual de un documento público — pero nunca se extraen como datos estructurados ni se convierten en entidades del grafo. Plaza no modela personas como parte de su corpus ordinario. En la única zona excepcional reconocible aquí, Plaza solo admitiría la representación estrictamente funcional y verificable de un hecho institucional de titularidad oficial del cargo cuando ello resulte indispensable para la trazabilidad institucional.
 
 ### Información no pública
 
 Plaza solo trabaja con información que ya es pública. Si una fuente le ofrece datos reservados bajo acuerdos de confidencialidad, con fines académicos limitados, o con cualquier restricción de redistribución, Plaza los rechaza. La apertura de Plaza es simétrica: lo que entra, sale.
+
+Plaza tampoco reutiliza información pública para fines incompatibles con la finalidad pública con la que fue recabada o publicada. La publicidad del dato no elimina por sí sola los límites sobre su reutilización posterior.
+
+### Scraping indiscriminado como estrategia general de acceso
+
+Plaza no adopta la extracción automatizada indiscriminada como postura de entrada al ecosistema estatal. La automatización existe como capacidad instrumental residual, no como identidad del proyecto.
 
 ---
 

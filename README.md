@@ -10,7 +10,7 @@
 
 </div>
 
-Plaza estructura el corpus normativo costarricense como un grafo verificable, alineado a estándares internacionales de datos jurídicos, para que cualquier sistema —inteligencia artificial, aplicación web, herramienta de análisis, o persona— pueda consultarlo con trazabilidad completa y citación verificable.
+Plaza estructura el corpus normativo costarricense como un grafo verificable, alineado a estándares internacionales de datos jurídicos, para que cualquier sistema —inteligencia artificial, aplicación web, herramienta de análisis, o persona— pueda consultarlo con trazabilidad completa y citación verificable. Plaza es infraestructura AI-facing: expone datos verificables a sistemas de IA, pero no se presenta como un sistema de IA autónomo que interpreta el derecho.
 
 No es un sitio web. No es una aplicación. No es un buscador.
 
@@ -31,6 +31,8 @@ Esta brecha tiene un costo concreto:
 ---
 
 ## La propuesta
+
+Plaza no parte de la premisa de que toda fuente pública deba adquirirse automáticamente. Su regla de acceso es jerárquica: primero publicación proactiva, luego solicitud formal, luego convenio cuando corresponde, y solo de forma residual adquisición automatizada respetuosa. Plaza no se define por scraping; se define por acceso y redistribución jurídicamente habilitados.
 
 Plaza transforma el corpus normativo costarricense en un recurso que cualquier sistema puede consultar con **tres compromisos fundamentales**:
 
@@ -217,7 +219,7 @@ Lo que existe hoy:
 
 Lo que está en construcción:
 
-- 🔨 Implementación del pipeline de captura, refinamiento y canonicalización.
+- 🔨 Implementación del sistema de habilitación de fuentes, adquisición, refinamiento y canonicalización.
 - 🔨 Primer snapshot público del corpus.
 - 🔨 Publicación de la ontología Plaza bajo dominio permanente.
 

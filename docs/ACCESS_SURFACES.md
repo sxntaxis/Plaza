@@ -23,7 +23,7 @@ Plaza expone cuatro superficies principales y dos auxiliares. Todas son pública
 - **Akoma Ntoso XML** — serialización para interoperabilidad con sistemas legales internacionales
 - **Volcado SQLite** — serialización operacional para quien prefiera trabajar relacional
 
-Cada snapshot incluye su propio identificador único, fecha de generación, hash criptográfico del contenido, y referencia al snapshot anterior. Los snapshots son inmutables y verificables.
+Cada snapshot incluye su propio identificador único, fecha de generación, hash criptográfico del contenido, y referencia al snapshot anterior. Los snapshots son inmutables y verificables. Cuando aplique, cada snapshot debe poder declarar también, por conjunto publicado, su fuente principal, base jurídica o licencia conocida, fecha de revisión del régimen aplicable, y condición de publicabilidad.
 
 **Garantías**:
 
@@ -66,6 +66,7 @@ Cada snapshot incluye su propio identificador único, fecha de generación, hash
 - Idempotencia: misma URI, mismo snapshot, misma respuesta, siempre.
 - Sin autenticación para uso razonable: Plaza es público por construcción.
 - Evolución sin ruptura: nuevas capacidades se agregan de forma compatible; cambios genuinamente incompatibles, de ocurrir, se ofrecen como media types nuevos o servicios complementarios, nunca reescribiendo URIs existentes.
+- Honestidad de publicabilidad: cuando una entidad o conjunto esté sujeto a restricciones de publicación, la superficie pública no debe simular apertura completa; debe omitirlo, degradarlo a referencia, o exponer solo la metadata permitida.
 
 **No se garantiza**:
 
@@ -151,6 +152,8 @@ Cuando una URI canónica se solicita con `Accept: text/html`, Plaza responde con
 **Esta superficie NO es un producto consumer-facing**. Es la representación por defecto del recurso cuando un navegador lo visita, consistente con las prácticas de ELI. Plaza no agrega funcionalidad de navegación, búsqueda estética, o experiencia de usuario sobre esta representación. Eso es trabajo de aplicaciones construidas sobre Plaza — no de Plaza misma.
 
 El HTML está ahí porque el estándar lo pide y porque facilita inspección y debugging. Nunca se promociona como la forma de consumir Plaza.
+
+Cuando aplique, las superficies públicas deben ofrecer un mecanismo visible de rectificación o contacto para correcciones relacionadas con fuente, exactitud o tratamiento de datos.
 
 ---
 
