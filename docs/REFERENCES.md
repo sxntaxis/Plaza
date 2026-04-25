@@ -32,7 +32,11 @@ No pretende ser enciclopédico. Lo que está aquí es lo que aparece en los docu
 
 **FRBR (Functional Requirements for Bibliographic Records)** — modelo conceptual de la IFLA que distingue cuatro niveles en cualquier obra: Work (obra intelectual), Expression (realización específica), Manifestation (forma física), Item (copia individual). ELI adopta los tres primeros. Ver: [IFLA FRBR Report](https://repository.ifla.org/handle/123456789/811).
 
-**Content negotiation** — mecanismo del protocolo HTTP por el cual cliente y servidor acuerdan el formato de respuesta mediante el header `Accept`. Plaza lo usa: la misma URI devuelve HTML, JSON-LD, Turtle o Akoma Ntoso según el header enviado.
+**Content negotiation** — mecanismo del protocolo HTTP por el cual cliente y servidor acuerdan el formato de respuesta mediante el header `Accept`. Plaza lo usa: la misma URI devuelve HTML, JSON-LD, Turtle o Akoma Ntoso XML según el header enviado.
+
+**Akoma Ntoso** — estándar XML para representar documentos legales estructurados. En Plaza se usa como serialización documental derivada, no como identidad canónica ni como ontología primaria del grafo RDF.
+
+**ELI-first** — decisión de modelado por la cual ELI gobierna identidad, metadata legal, FRBR, versiones y relaciones normativas del grafo canónico.
 
 ### Términos jurídicos costarricenses
 
@@ -109,7 +113,7 @@ Plaza se alinea con los siguientes estándares internacionales. Cada uno cumple 
 | Estándar | Publicador | Versión | Rol en Plaza | Especificación |
 |---|---|---|---|---|
 | **ELI** (European Legislation Identifier) | Oficina de Publicaciones de la UE | Ontología v1.3 | Estructura de URIs de legislación; metadata bibliográfica FRBR | [data.europa.eu/eli/ontology](https://data.europa.eu/eli/ontology) |
-| **Akoma Ntoso** | OASIS LegalDocML TC | v1.0 | Estructura interna XML de textos legales (artículos, transitorios) | [docs.oasis-open.org/legaldocml/akn-core/v1.0](http://docs.oasis-open.org/legaldocml/akn-core/v1.0/) |
+| **Akoma Ntoso** | OASIS LegalDocML TC | v1.0 | Serialización XML documental de textos legales estructurados | [docs.oasis-open.org/legaldocml/akn-core/v1.0](http://docs.oasis-open.org/legaldocml/akn-core/v1.0/) |
 | **schema.org/Legislation** | schema.org community | actual | Interoperabilidad con motores de búsqueda y herramientas web generales | [schema.org/Legislation](https://schema.org/Legislation) |
 | **PROV-O** | W3C | Recommendation 2013 | Ontología de procedencia: quién afirmó qué, cuándo, basado en qué | [w3.org/TR/prov-o](https://www.w3.org/TR/prov-o/) |
 | **SKOS** | W3C | Recommendation 2009 | Vocabularios controlados (tipos de norma, emisores, estados) | [w3.org/TR/skos-reference](https://www.w3.org/TR/skos-reference/) |

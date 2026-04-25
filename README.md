@@ -92,7 +92,7 @@ Fuente verificable para asistentes legales, chatbots institucionales, y herramie
 
 #### 💻 Desarrolladores e investigadores
 
-Snapshots descargables en RDF, JSON-LD y Akoma Ntoso. API REST sobre URIs estables. Catálogo DCAT para federación. Código abierto, datos abiertos, esquemas abiertos.
+Snapshots descargables en RDF/Turtle y JSON-LD, con Akoma Ntoso XML como export documental derivado. API REST sobre URIs estables. Catálogo DCAT para federación. Código abierto, datos abiertos, esquemas abiertos.
 
 </td>
 </tr>
@@ -150,7 +150,7 @@ Plaza no inventa su propio dialecto. Adopta los estándares internacionales que 
 | Rol | Estándar | Publicador |
 |---|---|---|
 | Identificadores de legislación | [**ELI**](https://data.europa.eu/eli/ontology) | Unión Europea |
-| Estructura de textos legales | [**Akoma Ntoso**](http://docs.oasis-open.org/legaldocml/akn-core/v1.0/) | OASIS |
+| Serialización XML de textos legales | [**Akoma Ntoso**](http://docs.oasis-open.org/legaldocml/akn-core/v1.0/) | OASIS |
 | Interoperabilidad web | [**schema.org/Legislation**](https://schema.org/Legislation) | schema.org |
 | Procedencia de datos | [**PROV-O**](https://www.w3.org/TR/prov-o/) | W3C |
 | Vocabularios controlados | [**SKOS**](https://www.w3.org/TR/skos-reference/) | W3C |
@@ -158,6 +158,8 @@ Plaza no inventa su propio dialecto. Adopta los estándares internacionales que 
 | Validación formal | [**SHACL**](https://www.w3.org/TR/shacl/) | W3C |
 
 Plaza no es un experimento costarricense. Es la manera costarricense de participar de una conversación global sobre cómo debe exponerse el derecho en la era de los datos.
+
+El grafo canónico es **ELI-first**: Akoma Ntoso se ofrece como representación XML derivada para quienes necesitan intercambio documental legal.
 
 ---
 

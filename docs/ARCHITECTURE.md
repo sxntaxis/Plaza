@@ -70,7 +70,7 @@ Cada capa respeta restricciones arquitectónicas que derivan directamente de los
 | 3 — Fuentes oficiales como autoridad | La adquisición nunca modifica artefactos; preserva lo que la fuente dijo y respeta la vía habilitada para accederlos. |
 | 4 — Procedencia explícita | PROV-O atraviesa todas las capas; cada entidad canónica carga su cadena de procedencia. |
 | 5 — Precisión temporal | Las versiones son entidades de primera clase en el grafo canónico, con URIs propias. |
-| 6 — Estándares como columna | El grafo canónico se expresa en ELI, Akoma Ntoso, schema.org/Legislation, PROV-O, SKOS, W3C ORG. Las capas operacionales pueden usar formatos internos, pero traducen a estándares al publicar. |
+| 6 — Estándares como columna | El grafo canónico se expresa en RDF con ELI, schema.org/Legislation, PROV-O, SKOS, Dublin Core Terms y extensiones `plaza:` mínimas. Akoma Ntoso se genera como serialización XML documental en la capa de publicación. |
 | 7 — Separación dato/aplicación | La capa de publicación es una frontera dura: las aplicaciones consumen las superficies públicas, nunca acceden a las capas operacionales. |
 | 10 — Disciplina reconstructiva | Los artefactos crudos son inmutables; cada capa posterior es derivable re-ejecutando las capas previas. |
 | 11 — Honestidad operativa | Cada capa preserva las distinciones de estado (ausente, fallido, inferido, verificado) sin colapsarlas. |
@@ -168,7 +168,7 @@ La regla general de Plaza es jerárquica: primero publicación proactiva, luego 
 
 **Entradas**: estado reconciliado, con entidades que cumplen los criterios de calidad para ser publicadas.
 
-**Salidas**: el grafo canónico de Plaza. Un conjunto de triples RDF alineados a las ontologías establecidas (ELI para legislación, Akoma Ntoso para estructura de textos, PROV-O para procedencia, SKOS para vocabularios, schema.org/Legislation para interoperabilidad web, W3C ORG para estructuras institucionales cuando se incorporen). Cada entidad tiene una URI canónica siguiendo la política de URIs.
+**Salidas**: el grafo canónico de Plaza. Un conjunto de triples RDF alineados a los estándares RDF adoptados: ELI para identidad, metadata legal, FRBR y relaciones normativas; PROV-O para procedencia; SKOS para vocabularios; Dublin Core Terms para metadata auxiliar; schema.org/Legislation para interoperabilidad web; y W3C ORG para estructuras institucionales cuando se incorporen. Cada entidad tiene una URI canónica siguiendo la política de URIs.
 
 **Invariantes**:
 
@@ -180,7 +180,7 @@ La regla general de Plaza es jerárquica: primero publicación proactiva, luego 
 
 **Dependencias**: depende de la reconciliación.
 
-**Sustituibilidad**: la canonicalización debe producir RDF válido bajo las ontologías establecidas. La tecnología de almacenamiento del grafo canónico (triple store, archivos Turtle, JSON-LD, o materialización relacional) es operacional; el contrato es el grafo RDF mismo.
+**Sustituibilidad**: la canonicalización debe producir RDF válido bajo los estándares adoptados para el grafo canónico. La tecnología de almacenamiento del grafo canónico (triple store, archivos Turtle, JSON-LD, o materialización relacional) es operacional; el contrato es el grafo RDF mismo.
 
 ---
 
@@ -190,7 +190,7 @@ La regla general de Plaza es jerárquica: primero publicación proactiva, luego 
 
 **Entradas**: el grafo canónico.
 
-**Salidas**: las superficies públicas activas — snapshots descargables, API REST, servidor MCP, feed Atom, catálogo DCAT, representación HTML vía content negotiation.
+**Salidas**: las superficies públicas activas — snapshots descargables, API REST, servidor MCP, feed Atom, catálogo DCAT y representaciones negociadas por contenido, incluyendo HTML, JSON-LD, Turtle y Akoma Ntoso XML cuando exista estructura documental suficiente.
 
 **Invariantes**:
 

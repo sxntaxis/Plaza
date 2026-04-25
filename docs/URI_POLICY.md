@@ -185,6 +185,8 @@ Accept: application/ld+json
 
 No hay URIs distintas para formatos distintos. Esto es requisito del estándar ELI y de los principios de la web semántica. Plaza nunca publica URIs del tipo `/ley/7092.json` o `/ley/7092/html` — esas son preocupaciones de protocolo, no de identidad.
 
+Las representaciones Akoma Ntoso pueden contener identificadores XML internos, pero estos no sustituyen ni compiten con la URI canónica Plaza/ELI.
+
 ---
 
 ## Casos especiales

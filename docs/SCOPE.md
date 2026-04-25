@@ -34,7 +34,7 @@ Plaza modela el **corpus normativo costarricense** como grafo estructurado, cita
 
 ### Superficies de acceso
 
-- **Snapshots descargables**: exports periódicos del corpus completo en RDF/Turtle, JSON-LD, y Akoma Ntoso XML.
+- **Snapshots descargables**: exports periódicos del corpus completo en RDF/Turtle y JSON-LD, más Akoma Ntoso XML como serialización documental derivada cuando exista estructura suficiente.
 - **API REST pública**: endpoints deterministas sobre los identificadores canónicos, con URIs estables por norma, versión, artículo, y versión de artículo.
 - **Servidor MCP**: interfaz nativa para sistemas de IA que consumen el corpus con retrieval verificable.
 - **Catálogo DCAT**: descripción estructurada de los datasets publicados, para federación con otros portales de datos abiertos.

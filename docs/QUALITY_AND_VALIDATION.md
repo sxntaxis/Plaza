@@ -179,6 +179,8 @@ SHACL se ejecuta en tres momentos:
 
 SHACL valida estructura, no veracidad. Puede verificar que una fecha tenga formato válido, pero no que sea la fecha correcta. La veracidad depende de la evidencia de las fuentes y de los criterios de los niveles de verificación descritos arriba.
 
+SHACL tampoco valida la conformidad de exportaciones Akoma Ntoso XML. Cuando Plaza publique Akoma Ntoso, esa serialización se valida con mecanismos propios de XML, como XSD o Schematron, sin convertir esa validación en requisito para canonicalizar el grafo RDF.
+
 ---
 
 ## Reconciliation issues

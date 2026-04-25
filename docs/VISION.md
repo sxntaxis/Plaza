@@ -26,7 +26,7 @@ Plaza toma la normativa costarricense — leyes, decretos, reglamentos, y sus re
 
 **Precisión temporal.** Plaza responde no solo "¿qué dice esta ley?" sino "¿qué decía esta ley en esta fecha?" Las versiones son objetos de primera clase, no notas al pie.
 
-Todo esto se expresa en el vocabulario de los estándares internacionales de datos jurídicos: ELI para la estructura de identificadores, schema.org/Legislation y Akoma Ntoso para la estructura de los textos, PROV-O para la procedencia, SKOS para los vocabularios controlados. Plaza no es un experimento costarricense; es la manera costarricense de participar de una conversación global sobre cómo debe exponerse el derecho en la era de los datos.
+Todo esto se expresa mediante estándares internacionales por capa: ELI para identidad, metadata legal, versionado FRBR y relaciones normativas; PROV-O para procedencia; SKOS para vocabularios controlados; schema.org/Legislation para interoperabilidad web; y Akoma Ntoso como serialización XML documental de los textos legales. Plaza no es un experimento costarricense; es la manera costarricense de participar de una conversación global sobre cómo debe exponerse el derecho en la era de los datos.
 
 ## A quién sirve Plaza
 

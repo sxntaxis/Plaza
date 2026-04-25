@@ -20,8 +20,10 @@ Plaza expone cuatro superficies principales y dos auxiliares. Todas son pública
 
 - **RDF/Turtle** — serialización canónica para consumo semántico
 - **JSON-LD** — serialización amigable para aplicaciones web y APIs
-- **Akoma Ntoso XML** — serialización para interoperabilidad con sistemas legales internacionales
+- **Akoma Ntoso XML** — serialización documental derivada para interoperabilidad con sistemas legales internacionales; no es la representación canónica del grafo
 - **Volcado SQLite** — serialización operacional para quien prefiera trabajar relacional
+
+RDF/Turtle y JSON-LD son las serializaciones primarias del grafo canónico. Akoma Ntoso XML es una representación documental derivada.
 
 Cada snapshot incluye su propio identificador único, fecha de generación, hash criptográfico del contenido, y referencia al snapshot anterior. Los snapshots son inmutables y verificables. Cuando aplique, cada snapshot debe poder declarar también, por conjunto publicado, su fuente principal, base jurídica o licencia conocida, fecha de revisión del régimen aplicable, y condición de publicabilidad.
 
@@ -56,7 +58,7 @@ Cada snapshot incluye su propio identificador único, fecha de generación, hash
 
 - `application/ld+json` — JSON-LD (default para consumidores API)
 - `text/turtle` — Turtle
-- `application/akoma-ntoso+xml` — Akoma Ntoso
+- `application/akoma-ntoso+xml` — Akoma Ntoso XML derivado, disponible cuando el recurso tenga representación documental suficiente
 - `text/html` — HTML con RDFa embebido (para inspección humana)
 - `application/json` — JSON simplificado sin contexto semántico (para consumidores que no manejan LD)
 

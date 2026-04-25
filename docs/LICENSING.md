@@ -57,6 +57,8 @@ Las contribuciones al repositorio principal de Plaza se aceptan bajo los términ
 
 El **corpus estructurado** publicado válidamente por Plaza se distribuye bajo CC BY-SA 4.0. Esto incluye los snapshots en todos sus formatos (RDF, JSON-LD, Akoma Ntoso XML, SQLite), la estructura del grafo, los vocabularios controlados propios del proyecto, las anotaciones interpretativas, la metadata de procedencia, los identificadores canónicos, y los textos normativos incorporados fielmente al corpus como parte integrante del mismo, en la medida en que su redistribución esté jurídicamente habilitada.
 
+La inclusión de Akoma Ntoso XML como formato de snapshot no convierte a Akoma en modelo canónico del corpus; es una serialización documental del mismo corpus licenciado.
+
 ### Base jurídica para la redistribución de textos oficiales
 
 Los textos normativos oficiales costarricenses — constituciones, leyes, decretos, reglamentos, acuerdos municipales, sentencias judiciales — son de libre reproducción bajo el régimen costarricense de reproducción de actos oficiales, con la única carga de ajustarse estrictamente a la edición oficial. Plaza opera íntegramente dentro de este régimen: redistribuye los textos con fidelidad y con atribución explícita a las fuentes oficiales (SCIJ/PGR, La Gaceta/Imprenta Nacional, Poder Judicial, etc.), pero no requiere — ni ha requerido nunca — licencia específica de esas instituciones para incorporarlos al corpus.

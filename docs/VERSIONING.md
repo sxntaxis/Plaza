@@ -36,6 +36,8 @@ La ontología Plaza es el archivo OWL (más documentación asociada) que define 
 
 No incluye las ontologías importadas (ELI, PROV-O, etc.) — esas se versionan por sus propios publicadores. La ontología Plaza es exclusivamente el trabajo original de Plaza.
 
+Las serializaciones Akoma Ntoso no forman parte de la ontología Plaza. Su perfil de exportación puede versionarse como capacidad de publicación o como perfil documental separado, pero no altera por sí mismo la versión de la ontología salvo que requiera cambios en el modelo canónico.
+
 ### Formato: Semantic Versioning 2.0.0
 
 La ontología sigue [Semantic Versioning](https://semver.org/) en su variante aplicada a ontologías. La URI de la ontología incluye la versión:

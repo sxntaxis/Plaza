@@ -8,22 +8,38 @@ Este documento describe el **contrato semántico** del grafo canónico, no su im
 
 ---
 
-## Ontologías adoptadas
+## Estándares adoptados por capa
 
-Plaza adopta las siguientes ontologías como columnas de su modelo. Cada una cumple un rol específico y no se superpone con las demás.
+Plaza adopta estándares internacionales con responsabilidades separadas. No todos forman parte del grafo canónico de la misma manera: algunos definen clases y propiedades RDF, otros validan el grafo, otros describen superficies de publicación, y otros serializan documentos legales.
 
-| Ontología | Prefijo | Rol en el grafo |
-|---|---|---|
-| [ELI](https://data.europa.eu/eli/ontology) | `eli` | Identidad de legislación y estructura bibliográfica (FRBR) |
-| [Akoma Ntoso](http://docs.oasis-open.org/legaldocml/akn-core/v1.0/) | `akn` | Estructura interna de textos legales (artículos, transitorios, anexos) |
-| [schema.org/Legislation](https://schema.org/Legislation) | `schema` | Interoperabilidad con motores de búsqueda y herramientas web generales |
-| [PROV-O](https://www.w3.org/TR/prov-o/) | `prov` | Procedencia de toda afirmación en el grafo |
-| [SKOS](https://www.w3.org/TR/skos-reference/) | `skos` | Vocabularios controlados (tipos de norma, emisores, tipos de relación) |
-| [Dublin Core Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/) | `dcterms` | Metadata bibliográfica genérica cuando ELI no cubre |
-| [W3C ORG](https://www.w3.org/TR/vocab-org/) | `org` | Reservada para capa institucional futura; no activa en esta versión del modelo |
-| Plaza extensions | `plaza` | Extensiones costarricenses documentadas explícitamente |
+El grafo canónico de Plaza es **ELI-first**: ELI gobierna identidad, metadata legal, versionado FRBR y relaciones entre recursos normativos. Los demás estándares se incorporan según su capa específica.
+
+| Estándar | Prefijo / formato | Capa | Rol en Plaza |
+|---|---|---|---|
+| [ELI](https://data.europa.eu/eli/ontology) | `eli` | Grafo canónico | Identidad de legislación, modelo FRBR, metadata legal, relaciones entre normas y versiones |
+| [schema.org/Legislation](https://schema.org/Legislation) | `schema` | Grafo canónico / web | Tipo adicional para interoperabilidad con motores de búsqueda y herramientas web generales |
+| [PROV-O](https://www.w3.org/TR/prov-o/) | `prov` | Grafo canónico | Procedencia de entidades, afirmaciones, actividades de procesamiento y artefactos fuente |
+| [SKOS](https://www.w3.org/TR/skos-reference/) | `skos` | Grafo canónico | Vocabularios controlados: tipos de norma, emisores, estados de vigencia y tipos de subdivisión |
+| [Dublin Core Terms](https://www.dublincore.org/specifications/dublin-core/dcmi-terms/) | `dcterms` | Grafo canónico auxiliar | Metadata bibliográfica genérica cuando ELI no cubre suficientemente el caso |
+| [W3C ORG](https://www.w3.org/TR/vocab-org/) | `org` | Futuro | Reservada para capa institucional futura; no activa en esta versión del modelo |
+| Plaza extensions | `plaza` | Grafo canónico | Extensiones costarricenses mínimas, documentadas explícitamente |
+| [Akoma Ntoso](http://docs.oasis-open.org/legaldocml/akn-core/v1.0/) | `application/akoma-ntoso+xml` | Serialización documental | Export XML derivado para representar la estructura interna de textos legales; no gobierna la identidad canónica |
+| [SHACL](https://www.w3.org/TR/shacl/) | `.ttl` shapes | Validación | Shapes versionadas que validan el grafo RDF antes de publicación |
+| [DCAT](https://www.w3.org/TR/vocab-dcat-3/) | `dcat` | Catálogo | Descripción de snapshots, distribuciones, servicios y metadata de publicación |
 
 El prefijo `plaza:` corresponde al namespace `https://plaza.cr/ontology#`. Las extensiones bajo este prefijo están documentadas en la sección correspondiente de este documento.
+
+## Relación entre ELI y Akoma Ntoso
+
+ELI y Akoma Ntoso se traslapan en que ambos pueden representar recursos legislativos, versiones y subdivisiones. Plaza resuelve ese traslape asignándoles responsabilidades distintas.
+
+**ELI gobierna la identidad pública.** Toda norma, versión, artículo, transitorio o anexo que Plaza publique recibe una URI canónica definida por `URI_POLICY.md` y expresada en el grafo como recurso ELI.
+
+**Akoma Ntoso gobierna la representación documental XML.** Cuando Plaza exporta una norma como Akoma Ntoso, el XML preserva la estructura interna del texto legal — títulos, capítulos, artículos, incisos, transitorios, anexos — pero no introduce identidades públicas alternativas. Los identificadores internos de Akoma, cuando existan, deben enlazar o corresponder a las URIs canónicas ELI/Plaza.
+
+La regla operativa es simple: **ELI identifica; Akoma serializa.**
+
+Por tanto, Akoma Ntoso no es requisito para canonicalizar una entidad. Una norma puede entrar al grafo canónico si satisface las reglas ELI, PROV-O, SKOS y SHACL aplicables. La representación Akoma Ntoso puede generarse después como superficie derivada de publicación.
 
 ---
 
@@ -78,6 +94,8 @@ En Plaza:
 - **Un LegalResource por norma.** La Ley 7092 tiene un único LegalResource, con URI permanente. Esta entidad representa "la Ley 7092 como obra intelectual" y nunca cambia de URI.
 - **Un LegalExpression por cada versión histórica.** Cada vez que la Ley 7092 cambia su texto material, se crea un nuevo LegalExpression con URI propia que incluye la fecha de vigencia. Las Expressions históricas se preservan.
 - **Format no se materializa en el grafo.** Se genera por content negotiation cuando un consumidor solicita una URI de Expression con un Accept header específico.
+
+Esta decisión fija la relación con Akoma Ntoso: una exportación Akoma corresponde al nivel de `eli:Format` o a una representación serializada derivada de una `eli:LegalExpression`. No reemplaza la `LegalExpression`, no define la URI pública y no es la fuente de verdad del grafo canónico.
 
 ---
 
@@ -157,6 +175,8 @@ Como LegalResource, una Subdivision es una obra intelectual abstracta. Tiene sus
 
 Nota: `plaza:subdivision_type` y `plaza:subdivision_number` son extensiones costarricenses. ELI no distingue formalmente entre artículos y transitorios porque los sistemas jurídicos europeos no siempre tienen esa figura. El derecho costarricense sí, y Plaza lo codifica explícitamente.
 
+Estas propiedades no intentan replicar todo el modelo estructural de Akoma Ntoso dentro del grafo RDF. Representan únicamente la estructura mínima necesaria para identidad, versionado, navegación y citación. La estructura documental completa puede expresarse en exportaciones Akoma Ntoso cuando exista suficiente estructura refinada para generarlas.
+
 ---
 
 ### Subdivisiones y Expressions de subdivisiones
@@ -170,6 +190,25 @@ La Expression de un artículo es también una LegalExpression en términos de EL
 - Tiene texto literal, fecha de vigencia, y procedencia propia
 
 **Relación entre versiones de norma y versiones de artículos**: las versiones no están atadas. Una nueva versión de la norma puede resultar de cambios en uno o varios artículos; un artículo puede mantener la misma Expression a través de varias versiones de la norma si su texto no cambió. El grafo modela esto explícitamente vía `eli:has_member` en cada Expression de norma apuntando a las Expressions de artículos vigentes en esa versión.
+
+---
+
+## Estructura textual mínima vs estructura documental completa
+
+El grafo canónico de Plaza modela únicamente la estructura textual necesaria para cumplir sus contratos públicos: identidad, citación, versionado, navegación y trazabilidad.
+
+En el alcance actual, las unidades estructurales canónicas mínimas son:
+
+- norma;
+- versión de norma;
+- artículo;
+- versión de artículo;
+- transitorio;
+- anexo cuando sea necesario.
+
+Plaza no está obligado a canonicalizar toda la microestructura documental de una norma — capítulos, títulos, secciones, párrafos, incisos, numerales — salvo cuando esa estructura sea necesaria para una URI pública, una relación jurídica, una cita verificable o una validación de integridad.
+
+Akoma Ntoso es el formato preferente para representar esa estructura documental completa cuando Plaza la exporte como XML. El grafo RDF conserva las entidades jurídicas citables; Akoma conserva la forma documental.
 
 ---
 
@@ -413,21 +452,25 @@ Para ilustrar cómo el modelo opera en conjunto, este es un fragmento del grafo 
 
 Este fragmento es semánticamente autocontenido: un consumidor que entiende ELI + PROV-O + SKOS puede procesar este grafo sin conocer nada específico de Plaza, excepto las extensiones documentadas explícitamente.
 
+La representación Akoma Ntoso de esta misma norma sería una serialización XML derivada de estas entidades y del texto refinado. No se muestra aquí porque no forma parte del grafo canónico RDF. Sus identificadores internos deben corresponder a las URIs ELI/Plaza cuando representen recursos canónicos.
+
 ---
 
 ## Reglas de modelado
 
 Cuando se agrega una nueva clase de información al grafo, estas reglas aplican:
 
-**1. Agotar los estándares primero.** Antes de crear una propiedad `plaza:`, agotar ELI, schema.org/Legislation, Dublin Core, y PROV-O. La mayoría de las necesidades están cubiertas.
+**1. Agotar estándares RDF primero.** Antes de crear una propiedad `plaza:`, agotar ELI, schema.org/Legislation, Dublin Core, PROV-O y SKOS. La mayoría de necesidades del grafo canónico están cubiertas por ellos.
 
-**2. Extensiones `plaza:` requieren documentación.** Toda propiedad nueva bajo el prefijo `plaza:` se documenta en este documento con su rationale. No hay extensiones silenciosas.
+**2. No convertir serializaciones en modelo canónico.** Akoma Ntoso se consulta para exportaciones XML y estructura documental, pero no desplaza la identidad ELI ni obliga a duplicar en RDF toda la microestructura documental.
 
-**3. Las extensiones preservan compatibilidad.** Un consumidor que conoce solo los estándares debe poder procesar el grafo ignorando las propiedades `plaza:` sin perder las relaciones fundamentales. Nunca una extensión `plaza:` reemplaza una propiedad ELI equivalente — la acompaña.
+**3. Extensiones `plaza:` requieren documentación.** Toda propiedad nueva bajo el prefijo `plaza:` se documenta en este documento con su rationale. No hay extensiones silenciosas.
 
-**4. Los concept schemes SKOS se mapean a estándares cuando sea posible.** Cada concepto `plaza:` que tenga equivalente razonable en un vocabulario estándar (ej. tabla de tipos ELI) se vincula con `skos:exactMatch` o `skos:closeMatch`.
+**4. Las extensiones preservan compatibilidad.** Un consumidor que conoce solo los estándares debe poder procesar el grafo ignorando las propiedades `plaza:` sin perder las relaciones fundamentales. Nunca una extensión `plaza:` reemplaza una propiedad ELI equivalente — la acompaña.
 
-**5. Versionado del modelo.** El modelo de datos se versiona junto con la ontología Plaza. Cambios compatibles (agregar clases, agregar propiedades opcionales, agregar conceptos SKOS) incrementan minor. Cambios incompatibles (retirar clases, cambiar domain/range, redefinir semántica) requieren major y convivencia con la versión anterior.
+**5. Los concept schemes SKOS se mapean a estándares cuando sea posible.** Cada concepto `plaza:` que tenga equivalente razonable en un vocabulario estándar (ej. tabla de tipos ELI) se vincula con `skos:exactMatch` o `skos:closeMatch`.
+
+**6. Versionado del modelo.** El modelo de datos se versiona junto con la ontología Plaza. Cambios compatibles (agregar clases, agregar propiedades opcionales, agregar conceptos SKOS) incrementan minor. Cambios incompatibles (retirar clases, cambiar domain/range, redefinir semántica) requieren major y convivencia con la versión anterior.
 
 ---
 
