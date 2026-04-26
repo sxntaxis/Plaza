@@ -1,0 +1,8 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix plaza: <https://plaza.cr/ontology#> .
+
+plaza:DemoLegalResourceShape
+  a sh:NodeShape ;
+  sh:targetClass eli:LegalResource ;
+  sh:property [ sh:path plaza:demoOnly ; sh:minCount 1 ] .

@@ -1,0 +1,9 @@
+sources:
+  scij:
+    name: "Sistema Costarricense de Informacion Juridica"
+    source_type: "official_consolidation"
+    access_method: "preserved_artifact_or_formal_access"
+    demo_enabled: true
+    publicability_default: "publicable_with_demo_limitations"
+    notes:
+      - "Demo sin reconciliacion con La Gaceta."

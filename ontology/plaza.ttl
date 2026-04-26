@@ -1,0 +1,6 @@
+@prefix plaza: <https://plaza.cr/ontology#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+plaza:DemoResource a rdfs:Class .
+plaza:demoOnly a rdfs:Property .
+plaza:demoLimitation a rdfs:Property .

@@ -1,0 +1,1 @@
+{"type":"object","required":["conforms"],"properties":{"conforms":{"type":"boolean"},"checked_at":{"type":"string"},"graph_path":{"type":"string"},"shapes_path":{"type":"string"},"results":{"type":"array"}}}

@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "plaza"
+version = "0.1.0"
+description = "Plaza Demo state, validation, and MCP guard utilities"
+requires-python = ">=3.11"
+
+[project.scripts]
+plaza = "plaza.cli.main:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]

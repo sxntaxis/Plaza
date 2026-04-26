@@ -1,0 +1,35 @@
+@prefix eli: <http://data.europa.eu/eli/ontology#> .
+@prefix plaza: <https://plaza.cr/ontology#> .
+@prefix plazav: <https://plaza.cr/vocab/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+
+<https://demo.plaza.cr/eli/cr/asamblea/1949/constitucion/politica>
+  a eli:LegalResource, plaza:DemoResource ;
+  eli:type_document plazav:constitucion ;
+  eli:title "Constitucion Politica de la Republica de Costa Rica" ;
+  plaza:demoOnly true ;
+  plaza:demoLimitation "Demo URI; not an official public canonical Plaza production URI." ;
+  prov:wasDerivedFrom <urn:plaza:artifact:scij-demo-constitucion> .
+
+<https://demo.plaza.cr/eli/cr/asamblea/1988/ley/7092>
+  a eli:LegalResource, plaza:DemoResource ;
+  eli:type_document plazav:ley ;
+  eli:number "7092" ;
+  eli:title "Ley del Impuesto sobre la Renta" ;
+  eli:basis_for <https://demo.plaza.cr/eli/cr/poder_ejecutivo/1988/decreto_ejecutivo/18445> ;
+  plaza:demoOnly true ;
+  prov:wasDerivedFrom <urn:plaza:artifact:scij-demo-ley-7092> .
+
+<https://demo.plaza.cr/eli/cr/poder_ejecutivo/1988/decreto_ejecutivo/18445>
+  a eli:LegalResource, plaza:DemoResource ;
+  eli:type_document plazav:decreto_ejecutivo ;
+  eli:number "18445" ;
+  eli:title "Reglamento de la Ley del Impuesto sobre la Renta" ;
+  eli:based_on <https://demo.plaza.cr/eli/cr/asamblea/1988/ley/7092> ;
+  plaza:demoOnly true ;
+  prov:wasDerivedFrom <urn:plaza:artifact:scij-demo-decreto-18445> .
+
+plazav:ley a skos:Concept ; skos:prefLabel "Ley"@es .
+plazav:decreto_ejecutivo a skos:Concept ; skos:prefLabel "Decreto ejecutivo"@es .
+plazav:constitucion a skos:Concept ; skos:prefLabel "Constitucion"@es .

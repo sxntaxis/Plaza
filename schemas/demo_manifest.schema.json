@@ -1,0 +1,1 @@
+{"type":"object","required":["graph_path","validation_report_path","resources"],"properties":{"graph_path":{"type":"string"},"validation_report_path":{"type":"string"},"resources":{"type":"array"}}}

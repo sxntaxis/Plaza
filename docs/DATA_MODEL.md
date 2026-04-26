@@ -247,14 +247,15 @@ plaza:scij_affectation_type  "Reforma parcial"  (literal, si la clasificación d
 
 Las "concordancias" de SCIJ típicamente se mapean a `eli:cites` cuando son referencias directas entre normas, o a `plaza:concordancia_tematica` cuando son vínculos temáticos que no alcanzan la calidad de cita directa.
 
-### Relaciones de reglamentación
+### Relaciones de fundamento reglamentario
 
 | Propiedad ELI | Significado |
 |---|---|
-| `eli:applies` | Esta norma aplica/implementa a otra |
-| `eli:applied_by` | Esta norma es aplicada/implementada por otra (inverso) |
+| `eli:based_on` | Esta norma se funda en otra |
+| `eli:basis_for` | Esta norma es fundamento de otra (inverso) |
+| `eli:applies` | Esta norma aplica a otra en sentido informativo/de conformidad, cuando la evidencia lo justifica |
 
-Las "reglamentaciones" de SCIJ (donde un reglamento implementa una ley) se mapean a `eli:applies` del reglamento hacia la ley.
+Las "reglamentaciones" de SCIJ (donde un reglamento se funda en una ley) se mapean por defecto a `eli:based_on` del reglamento hacia la ley y, cuando se emite inverso, a `eli:basis_for` de la ley hacia el reglamento. `eli:applies` queda reservado para relaciones informativas/de conformidad cuando la fuente y el caso lo justifiquen; no es la relación primaria de reglamentación de la Demo.
 
 ### Relaciones de vigencia
 
