@@ -1,7 +1,7 @@
 # Plaza — Auditoría de Correctitud del Pipeline Legacy
 **Fecha:** 2026-04-24
 **Alcance:** Etapas del pipeline en /mnt/Tokyo/Lab/Git/Plaza/archive/old/
-**Inventario de referencia:** /mnt/Tokyo/Lab/Git/Plaza/archive/INVENTORY_REPORT.md
+**Inventario de referencia:** `demo/research/source_audits/INVENTORY_REPORT.md`
 
 ## 1. Resumen ejecutivo
 
@@ -504,7 +504,7 @@ No verificable por el agente:
 - DB read-only usada en scripts Python: `file:/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/db/plaza_runtime.db?mode=ro&immutable=1`.
 - Verificación de portada Gaceta: `pdftotext -f 1 -l 1 /mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/gaceta/raw/gaceta_YYYY-MM-DD.pdf -`.
 - Verificación final de no modificación tracked bajo archive: `git status --short --untracked-files=no -- "archive/old"`.
-- Verificación de marcadores temporales pendientes en `/mnt/Tokyo/Lab/Git/Plaza/CORRECTNESS_AUDIT_REPORT.md`.
+- Verificación de marcadores temporales pendientes en `demo/research/source_audits/CORRECTNESS_AUDIT_REPORT.md`.
 
 ### Errores concretos reproducibles
 

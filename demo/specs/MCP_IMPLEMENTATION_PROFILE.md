@@ -2,7 +2,7 @@
 
 ## Implementation status
 
-As of `0.4.0`, this profile is a target contract for the functional Demo. The repository implements only the local validation/fail-closed guard. Tools, resources, structured outputs, and citations are `0.5.0` work.
+As of `0.4.0`, this profile is a target contract for the functional Demo. The repository implements only the local validation/fail-closed guard. Tools, resources, structured outputs, and citations are functional Demo implementation work.
 
 ## 0. Resumen ejecutivo de decisiones
 
@@ -100,7 +100,7 @@ La superficie MCP de Plaza Demo se divide en tres planos: **recursos estáticos*
 |---|---|---|---|
 | `https://demo.plaza.cr/mcp/graph/main` | `text/turtle` | Grafo canónico Demo completo, parseable. | Recurso. |
 | `https://demo.plaza.cr/mcp/graph/main.jsonld` | `application/ld+json` | Misma información en JSON-LD (derivada al vuelo, no persistida). | Recurso (recomendación; ver §17). |
-| `https://demo.plaza.cr/mcp/catalog/resources` | `application/json` | Listado JSON de los 4 recursos legales del Demo (igual al output de `plaza.list_resources`). | Recurso (espejo del tool, para clientes que no llaman tools). |
+| `https://demo.plaza.cr/mcp/catalog/resources` | `application/json` | Listado JSON del conjunto aprobado de recursos legales del Demo (igual al output de `plaza.list_resources`). | Recurso (espejo del tool, para clientes que no llaman tools). |
 | `https://demo.plaza.cr/mcp/catalog/validation` | `application/json` | Copia del `validation_report.json`. | Recurso. |
 | `https://demo.plaza.cr/mcp/catalog/demo_notice` | `text/markdown` | Texto fijo describiendo el carácter Demo y las limitaciones. | Recurso. |
 
@@ -126,7 +126,7 @@ La superficie MCP de Plaza Demo se divide en tres planos: **recursos estáticos*
 
 | Nombre | Tipo | `readOnly` | `idempotent` | `openWorld` | Notas |
 |---|---|---|---|---|---|
-| `plaza.list_resources` | tool | true | true | false | Lista los 4 recursos Demo. |
+| `plaza.list_resources` | tool | true | true | false | Lista el conjunto aprobado de recursos Demo. |
 | `plaza.get_resource` | tool | true | true | false | Metadatos estructurados de un recurso. |
 | `plaza.get_text` | tool | true | true | false | Texto preservado SCIJ. |
 | `plaza.search` | tool | true | true | false | Búsqueda determinística sobre índice local. |
@@ -156,7 +156,7 @@ El servidor declara, en la respuesta a `initialize`:
     "title": "Plaza — Costa Rican legal-data Demo (MCP)",
     "version": "0.1.0"
   },
-  "instructions": "Servidor de datos legales costarricenses en modo Demo. Sólo lectura. Cuatro recursos reales. Una relación normativa real. Citar siempre URIs bajo `https://demo.plaza.cr/eli/...`. No es asistente legal."
+  "instructions": "Servidor de datos legales costarricenses en modo Demo. Sólo lectura. Conjunto aprobado de recursos reales. Una relación normativa real. Citar siempre URIs bajo `https://demo.plaza.cr/eli/...`. No es asistente legal."
 }
 ```
 
@@ -181,7 +181,7 @@ Las herramientas usan **JSON Schema 2020-12** (dialecto por defecto desde `2025-
 {
   "name": "plaza.list_resources",
   "title": "Listar recursos legales del Demo",
-  "description": "Devuelve los cuatro recursos legales reales que conforman el grafo Demo (Constitución Política, una ley, un decreto ejecutivo, y la cuarta pieza definida en data/demo/canonical/demo.ttl). No incluye el texto completo. Para texto, usar plaza.get_text.",
+  "description": "Devuelve el conjunto aprobado de recursos legales reales que conforman el grafo Demo. No incluye el texto completo. Para texto, usar plaza.get_text. The current candidate set happens to contain four resources, but the MCP surface must not hardcode this count.",
   "inputSchema": { "type": "object", "additionalProperties": false, "properties": {} },
   "outputSchema": {
     "type": "object",
@@ -482,7 +482,7 @@ Los guardarraíles operan en **tres capas**: (a) descripciones de las tools, (b)
 | "Texto extraído de evidencia SCIJ preservada." | "Este es el texto vigente." |
 | "Relación representada como `eli:basis_for` desde la ley hacia el decreto, o `eli:based_on` desde el decreto hacia la ley, con evidencia `scij_explicit_reference`." | "Este decreto reglamenta válidamente esta ley." |
 | "URI `https://demo.plaza.cr/eli/...` — no es URI canónica pública de producción." | "URI oficial Plaza." |
-| "Demo: una relación normativa real, cuatro recursos legales, sin reconciliación con La Gaceta." | "Cobertura completa del derecho costarricense." |
+| "Demo: una relación normativa real, conjunto legal aprobado, sin reconciliación con La Gaceta." | "Cobertura completa del derecho costarricense." |
 | "Estado de la relación: `candidate`. Requiere revisión." | "Esta relación prueba responsabilidad legal." |
 
 **Capa C — lista negra absoluta.** Las siguientes acciones son rechazadas con error `legal_interpretation_request_rejected` (ver §9):
@@ -531,7 +531,7 @@ El runtime es un único proceso que monta el siguiente *pipeline* en su `lifespa
    - Se *bind*-ean prefijos en orden alfabético determinístico (`eli`, `plaza`, `plazav`, `prov`, `skos`).
    - Se calcula `triple_count` y un `graph_hash` (SHA-256 sobre la serialización canónica `nquads` ordenada).
 4. **Construcción de índices in-memory.**
-   - Mapa `uri → metadata` para los 4 recursos Demo.
+   - Mapa `uri → metadata` para el conjunto aprobado de recursos Demo.
    - Mapa `uri → list[triple]` para CBD rápido.
    - Mapa `uri → list[relation]` con `predicate`, `object`, `direction`, `status`, `evidence`.
    - Mapa `uri → provenance_chain` derivado de tripletas PROV-O.
@@ -628,7 +628,7 @@ Cada categoría tiene fixtures, input y criterio de aceptación verificable.
 | 2 | Parse del grafo | `demo.ttl` parseable | Tripletas cargadas; `graph_hash` reproducible. | Misma corrida 2 veces produce idéntico `graph_hash`. |
 | 3 | Compuerta de validación — sin reporte | borrar `validation_report.json` | Servidor en *closed mode* | `tools/call` devuelve `validation_report_missing`. |
 | 4 | Compuerta — `conforms=false` | reporte con violación | *closed mode* | error `validation_gate_failed` en cualquier op. |
-| 5 | `plaza.list_resources` | sin args | 4 entries con URI, type, title, issuer, demo_status, available_operations | longitud == 4; todas `demo_status == canonical_demo`. |
+| 5 | `plaza.list_resources` | sin args | entries for the approved Demo resource set with URI, type, title, issuer, demo_status, available_operations | all entries with `demo_status == canonical_demo`. |
 | 6 | `plaza.get_resource` URI válido | URI Constitución 1949 | metadata estructurada con `source_summary.hash` | hash no vacío; `canonical_public_uri_issued == false`; `production_candidate_uri` no vacío o `null` según configuración del Demo. |
 | 7 | `plaza.get_resource` URI inválido | `https://demo.plaza.cr/invalid` | tool exec error `invalid_uri` | `isError: true`, `code == invalid_uri`. |
 | 8 | `plaza.get_resource` URI no existe | `https://demo.plaza.cr/eli/cr/asamblea/9999/ley/9999` | tool exec error `resource_not_found` | `code == resource_not_found`. |
@@ -657,7 +657,7 @@ El servidor publica para cada cliente LLM tres canales de contrato: (a) el campo
 
 **Texto del `instructions` (primer canal):**
 
-> *"Servidor de datos legales costarricenses en modo Demo. Sólo lectura. Cuatro recursos legales reales y una relación normativa real. Citá siempre las URIs `https://demo.plaza.cr/eli/...`. No es asistente legal. No interpretás, no resumís, no aconsejás. Las relaciones con `status: candidate` o `review` no son verdad jurídica. Si Plaza no provee vigencia, no la inferís. Mostrá las limitaciones del Demo al usuario."*
+> *"Servidor de datos legales costarricenses en modo Demo. Sólo lectura. Conjunto aprobado de recursos legales reales y una relación normativa real. Citá siempre las URIs `https://demo.plaza.cr/eli/...`. No es asistente legal. No interpretás, no resumís, no aconsejás. Las relaciones con `status: candidate` o `review` no son verdad jurídica. Si Plaza no provee vigencia, no la inferís. Mostrá las limitaciones del Demo al usuario."*
 
 **Reglas de comportamiento esperadas del cliente LLM (recomendaciones, no obligación protocolar):**
 
@@ -720,7 +720,7 @@ Cada elemento queda fuera del alcance Demo y es decisión del proyecto.
 
 3. **¿La heurística de detección de "consulta interpretativa" en `plaza.search` se incluye en Demo o se difiere?** Es la única lógica de moderación de input. Recomendación: incluir como lista mínima de triggers y comportamiento conservador; documentar como configurable.
 
-4. **¿Qué cuarta pieza legal compone el set de 4 recursos?** El brief menciona "cuatro recursos legales" pero no los enumera taxativamente. Decisión del equipo de datos.
+4. **¿Qué recursos componen el conjunto aprobado del Demo?** Ver `demo/ops/DEMO_PHASE1_SELECTION_SUMMARY.md`. The current candidate set happens to contain four resources, but the MCP surface must not hardcode this count.
 
 5. **¿El servidor publica `instructions` literales o también una versión más larga como recurso `https://demo.plaza.cr/mcp/catalog/demo_notice`?** Recomendación: ambos.
 
@@ -760,7 +760,7 @@ Cada elemento queda fuera del alcance Demo y es decisión del proyecto.
       "demo_status": "canonical_demo",
       "available_operations": ["get_resource","get_text","get_graph","get_relations","get_provenance","explain_resource"]
     }
-    /* ... 2 más ... */
+    /* ... recursos adicionales del conjunto aprobado ... */
   ],
   "citations": [
     { "plaza_uri":"https://demo.plaza.cr/eli/cr/asamblea/1949/constitucion/politica",
@@ -769,7 +769,7 @@ Cada elemento queda fuera del alcance Demo y es decisión del proyecto.
   ],
   "warnings": [],
   "limitations": [
-    "Demo: cuatro recursos legales reales; no representa la totalidad del ordenamiento jurídico costarricense.",
+    "Demo: conjunto legal aprobado; no representa la totalidad del ordenamiento jurídico costarricense.",
     "Las URIs https://demo.plaza.cr/eli/... no son URIs canónicas públicas de producción."
   ],
   "status": "ok",
@@ -836,7 +836,7 @@ Cada elemento queda fuera del alcance Demo y es decisión del proyecto.
   },
   "citations": [/* ... */],
   "warnings": ["El ranking no expresa autoridad jurídica."],
-  "limitations": ["Búsqueda léxica determinística sobre 4 recursos Demo."],
+  "limitations": ["Búsqueda léxica determinística sobre el conjunto aprobado de recursos Demo."],
   "status": "ok",
   "generated_from_snapshot_or_graph": "demo.ttl",
   "demo_notice": "Demo Plaza."

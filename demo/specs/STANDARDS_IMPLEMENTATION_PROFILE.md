@@ -4,7 +4,7 @@ This document is the Demo standards contract. It replaces research-stage languag
 
 ## Scope
 
-The functional Demo target for `0.5.0` persists one canonical RDF graph at `data/demo/canonical/demo.ttl`, validates it with SHACL, and exposes it only through the local read-only MCP surface.
+The functional Demo persists one canonical RDF graph at `data/demo/canonical/demo.ttl`, validates it with SHACL, and exposes it only through the local read-only MCP surface.
 
 The Demo does not implement a REST API, public HTTP MCP, UI, SPARQL endpoint, Akoma Ntoso export, schema.org output, person modeling, or legal interpretation.
 
@@ -77,4 +77,4 @@ A resource may enter `data/demo/canonical/demo.ttl` only when it has:
 | Demo limitations | The Demo graph must declare limitations and avoid claims of official certification or production canonical URI issuance. |
 | No interpretation | The graph encodes data and provenance, not legal advice, legal reasoning, or certification. |
 
-The current `0.4.0` scaffold may satisfy only a subset of this profile. Full conformance is a `0.5.0` goal.
+The current `0.4.0` scaffold may satisfy only a subset of this profile. Full conformance is a functional Demo goal.

@@ -1,12 +1,14 @@
-# 0.5.0 Acceptance Contract - Functional Local MCP Demo
+# Demo Acceptance Contract - Functional Local MCP Demo
 
 ## Scope
 
-`0.5.0` is accepted only when Plaza runs a functional local stdio MCP Demo over a validated RDF graph generated from preserved evidence for exactly four real legal resources. This contract is stricter than the scaffold checklist and is the hard definition of Demo readiness.
+The functional Demo is accepted only when Plaza runs a functional local stdio MCP Demo over a validated RDF graph generated from preserved evidence for the minimum useful approved set of real legal resources. This contract is stricter than the scaffold checklist and is the hard definition of Demo readiness.
+
+The functional Demo acceptance does not require ingesting the full SCIJ raw collection; it requires a correct end-to-end path over the approved Demo set.
 
 ## Data requirements
 
-- Exactly four real legal resources are represented.
+- The approved real legal-resource set is represented.
 - At least one law-decree relation is present.
 - All legal resources use `https://demo.plaza.cr/eli/...`.
 - No legal resource uses `plaza-demo://eli/...`.
@@ -75,7 +77,8 @@
 - Person modeling.
 - Legal interpretation.
 - Production URI issuance.
+- Full SCIJ raw collection ingestion.
 
 ## Acceptance decision
 
-The Demo is ready for `0.5.0` only when every requirement in this contract is true. Any missing requirement keeps the release in scaffold or implementation-candidate state.
+The functional Demo is ready only when every requirement in this contract is true. Any missing requirement keeps the Demo in scaffold or implementation-candidate state.

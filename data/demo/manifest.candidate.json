@@ -1,0 +1,312 @@
+{
+  "manifest_kind": "demo_resource_candidate_manifest",
+  "target_milestone": "functional_demo",
+  "status": "candidate_pending_human_approval",
+  "created_from": [
+    "demo/research/source_audits/CORRECTNESS_AUDIT_REPORT.md",
+    "demo/research/source_audits/INVENTORY_REPORT.md",
+    "demo/ops/DEMO_PHASE1_SELECTION_SUMMARY.md"
+  ],
+  "selection_policy": {
+    "canonical_identity_rule": "Demo ELI URI is canonical; SCIJ nValor tuple is source identity; legacy norm.id is diagnostic only.",
+    "article_policy": "No article-level canonical claims unless separately verified.",
+    "gaceta_policy": "Publication hints may be used as bibliographic evidence; legacy segmentation is not canonical."
+  },
+  "resource_count_policy": {
+    "policy": "minimum_useful_approved_set",
+    "description": "The Demo resource count is not fixed at four; use the smallest approved set that satisfies the Demo acceptance needs, including the required law-decree or law-regulation relation.",
+    "current_recommended_count": 4,
+    "current_recommended_status": "candidate_pending_human_approval"
+  },
+  "relation_partner_status": {
+    "status": "verified_pending_human_approval",
+    "anchor_resource_candidate_id": "demo_resource_002",
+    "partner_resource_candidate_id": "demo_resource_004",
+    "evidence_note": "SCIJ related-surface evidence for 1:95992:139872 records Ley 7092 with Afectacion: Reglamentacion and Modo: Expreso. The direct ley_7092 norm_reglamentacion row was not found in the inspected legacy DB."
+  },
+  "future_expansion_policy": {
+    "status": "out_of_scope_for_functional_demo",
+    "direction": "The Demo may later expand toward a broader SCIJ raw-backed corpus after the small approved set proves the evidence-to-MCP path.",
+    "constraints": [
+      "Do not use legacy norm.id as canonical identity.",
+      "Do not use legacy article counts as canonical truth.",
+      "Do not use legacy Gaceta segmentation as canonical document evidence.",
+      "Scale only through preserved evidence, manifests, provenance, validation, and approved URI policy."
+    ]
+  },
+  "resources": [
+    {
+      "candidate_id": "demo_resource_001",
+      "status": "recommended",
+      "demo_uri": "https://demo.plaza.cr/eli/cr/asamblea/1949/constitucion/politica",
+      "resource_type": "constitucion",
+      "title": "Constitucion Politica de la Republica de Costa Rica",
+      "source_system": "scij",
+      "source_identity": {
+        "nValor1": "1",
+        "nValor2": "64115",
+        "nValor3": "106350",
+        "tuple": "1:64115:106350"
+      },
+      "legacy_diagnostic_label": "constitucion_politica",
+      "evidence": {
+        "ficha_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_52366_0_6c5f377e02_8bfdbebad02a.html",
+        "texto_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_64115_106350_c11019da6c_d94f3c6e324c.html",
+        "manifest_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/manifests/scij_1_64115_106350_c11019da6c_d94f3c6e324c.json",
+        "related_surface_paths": [
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_871_929_d2ad3758e4_4377895c748c.html",
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_871_928_e71c3e0162_a5da59ee1cdc.html"
+        ],
+        "publication_hint": "Año: 1949 Semestre: 2 Tomo: 2 Página: 724"
+      },
+      "demo_role": [
+        "Foundational legal-resource identity",
+        "Multiple SCIJ source identifiers with explicit caveats",
+        "Recognizable Demo query target"
+      ],
+      "known_caveats": [
+        "Historical chain incomplete: 6 versions persisted of 28 observed.",
+        "Publication not reconciled to local Gaceta PDF.",
+        "Article-level canonicalization is out of scope."
+      ],
+      "must_not_claim": [
+        "Complete historical version chain",
+        "Verified Gaceta publication document",
+        "Canonical article-level structure",
+        "Official certification"
+      ],
+      "next_action": "Human approval of constitution as one of the concrete Demo resources and approval of exact evidence fixtures."
+    },
+    {
+      "candidate_id": "demo_resource_002",
+      "status": "recommended",
+      "demo_uri": "https://demo.plaza.cr/eli/cr/asamblea/1988/ley/7092",
+      "resource_type": "ley",
+      "title": "Ley del Impuesto sobre la Renta",
+      "source_system": "scij",
+      "source_identity": {
+        "nValor1": "1",
+        "nValor2": "10969",
+        "nValor3": "11752",
+        "tuple": "1:10969:11752"
+      },
+      "legacy_diagnostic_label": "ley_7092",
+      "evidence": {
+        "ficha_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_10969_148984_96dd5ddd61_8e970432d77d.html",
+        "texto_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_10969_11752_0ae904242c_be274127940c.html",
+        "manifest_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/manifests/scij_1_10969_11752_0ae904242c_be274127940c.json",
+        "related_surface_paths": [
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_10969_11755_32fb0d198d_80d3f0a8cddb.html",
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_10969_11754_b2cdd9c96d_190e6c49f1b5.html"
+        ],
+        "publication_hint": "Gaceta 96 del 19/05/1988"
+      },
+      "demo_role": [
+        "Important law resource",
+        "Anchor for the required verified law-decree or law-regulation relation",
+        "Complex-resource caveat handling"
+      ],
+      "known_caveats": [
+        "Historical chain incomplete: 30 versions persisted of 83 observed.",
+        "Article count is unreliable in the audit sample.",
+        "Original Gaceta PDF is not local in the audited corpus.",
+        "A candidate partner has been located: Decreto Ejecutivo 43198-H / Reglamento de la Ley del Impuesto sobre la Renta, pending human approval and fixture preservation."
+      ],
+      "must_not_claim": [
+        "Complete historical version chain",
+        "Canonical article counts",
+        "Verified original Gaceta PDF",
+        "Final law-decree relation readiness before human approval and fixture preservation"
+      ],
+      "next_action": "Approve or reject Decreto Ejecutivo 43198-H as the relation partner, then preserve the selected SCIJ evidence fixtures if approved."
+    },
+    {
+      "candidate_id": "demo_resource_003",
+      "status": "recommended",
+      "demo_uri": "https://demo.plaza.cr/eli/cr/asamblea/2025/ley/10790",
+      "resource_type": "ley",
+      "title": "Ley para garantizar la transparencia en la eleccion de la Presidencia del Concejo Municipal",
+      "source_system": "scij",
+      "source_identity": {
+        "nValor1": "1",
+        "nValor2": "105797",
+        "nValor3": "148607",
+        "tuple": "1:105797:148607"
+      },
+      "legacy_diagnostic_label": "ley_10790",
+      "evidence": {
+        "ficha_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105797_148607_04f7555bf4_6c7034ad54d1.html",
+        "texto_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105797_148607_3abbe7d2ae_dd299449884e.html",
+        "manifest_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/manifests/scij_1_105797_148607_3abbe7d2ae_dd299449884e.json",
+        "related_surface_paths": [
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105797_148607_12e97b15ec_627bf13bbcd9.html"
+        ],
+        "publication_hint": "Gaceta 226 del 02/12/2025 Alcance 154; PDF listed as /mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/gaceta/raw/gaceta_2025-12-02.pdf"
+      },
+      "demo_role": [
+        "Simple recent law",
+        "Strong provenance fixture candidate",
+        "Low article/history complexity"
+      ],
+      "known_caveats": [
+        "Gaceta publication hint does not validate legacy Gaceta segmentation.",
+        "Article-level canonicalization is out of scope even though the law is simple."
+      ],
+      "must_not_claim": [
+        "Canonical article-level structure",
+        "Clean Gaceta segment correctness",
+        "Legal interpretation"
+      ],
+      "next_action": "Human approval of this concrete resource or replacement by an alternate simple law."
+    },
+    {
+      "candidate_id": "demo_resource_004",
+      "status": "recommended",
+      "demo_uri": "https://demo.plaza.cr/eli/cr/poder_ejecutivo/2021/decreto_ejecutivo/43198_h",
+      "resource_type": "decreto_ejecutivo",
+      "title": "Reglamento de la Ley del Impuesto sobre la Renta",
+      "source_system": "scij",
+      "source_identity": {
+        "nValor1": "1",
+        "nValor2": "95992",
+        "nValor3": "139872",
+        "tuple": "1:95992:139872"
+      },
+      "legacy_diagnostic_label": "reglamento_de_scij_1_95992_139872",
+      "evidence": {
+        "ficha_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_95992_139872_ad4103094e_e0f84684bf7a.html",
+        "texto_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_95992_139872_55a9d17cf3_fe45f3d92e3a.html",
+        "manifest_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/manifests/scij_1_95992_139872_55a9d17cf3_fe45f3d92e3a.json",
+        "related_surface_paths": [
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_95992_139872_66b49a8228_2cdd3660a8a3.html"
+        ],
+        "publication_hint": "Gaceta 243 del 17/12/2021 Alcance 257"
+      },
+      "demo_role": [
+        "Verified law-decree or law-regulation relation partner for ley_7092",
+        "Evidence-backed basis relation candidate using eli:based_on and eli:basis_for"
+      ],
+      "known_caveats": [
+        "The decisive relation evidence was found on the candidate decree/regulation related surface, not as a direct ley_7092 norm_reglamentacion row.",
+        "The relation does not prove complete regulatory coverage for Ley 7092.",
+        "Article-level canonicalization is out of scope."
+      ],
+      "must_not_claim": [
+        "Complete regulatory coverage for Ley 7092",
+        "Canonical article-level structure",
+        "Legal interpretation",
+        "Final Demo acceptance readiness before fixture preservation, graph generation, and validation"
+      ],
+      "next_action": "Human approval of this verified relation partner and approval of exact evidence fixtures before graph implementation."
+    },
+    {
+      "candidate_id": "demo_resource_005",
+      "status": "alternate",
+      "demo_uri": "https://demo.plaza.cr/eli/cr/asamblea/2025/ley/10791",
+      "resource_type": "ley",
+      "title": "Ley para favorecer el analisis cientifico de sustancias psicoactivas",
+      "source_system": "scij",
+      "source_identity": {
+        "nValor1": "1",
+        "nValor2": "105798",
+        "nValor3": "148608",
+        "tuple": "1:105798:148608"
+      },
+      "legacy_diagnostic_label": "ley_10791",
+      "evidence": {
+        "ficha_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105798_148608_8d358f2ee4_2471c9f8eaba.html",
+        "texto_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105798_148608_207babb03d_4e3d5c7a5be9.html",
+        "manifest_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/manifests/scij_1_105798_148608_207babb03d_4e3d5c7a5be9.json",
+        "related_surface_paths": [
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105798_148608_c625adae00_e509a147f8c5.html"
+        ],
+        "publication_hint": "Gaceta 226 del 02/12/2025 Alcance 154; PDF listed as /mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/gaceta/raw/gaceta_2025-12-02.pdf"
+      },
+      "demo_role": [
+        "Strong alternate simple recent law",
+        "Fallback for the simple-law slot"
+      ],
+      "known_caveats": [
+        "Does not satisfy the required law-decree relation.",
+        "Gaceta publication hint does not validate legacy Gaceta segmentation."
+      ],
+      "must_not_claim": [
+        "Law-decree relation satisfaction",
+        "Final Demo acceptance readiness",
+        "Clean Gaceta segment correctness"
+      ],
+      "next_action": "Use only if humans replace ley_10790 or intentionally accept it as a simple-law fallback; it cannot replace the relation partner."
+    },
+    {
+      "candidate_id": "demo_resource_006",
+      "status": "alternate",
+      "demo_uri": "https://demo.plaza.cr/eli/cr/asamblea/2025/ley/10788",
+      "resource_type": "ley",
+      "title": "Rescate de Vida Silvestre",
+      "source_system": "scij",
+      "source_identity": {
+        "nValor1": "1",
+        "nValor2": "105967",
+        "nValor3": "148850",
+        "tuple": "1:105967:148850"
+      },
+      "legacy_diagnostic_label": "ley_10788",
+      "evidence": {
+        "ficha_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105967_148850_0a40cb629e_79a1e311efa2.html",
+        "texto_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105967_148850_c72596e21e_9579ecda7f56.html",
+        "manifest_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/manifests/scij_1_105967_148850_c72596e21e_9579ecda7f56.json",
+        "related_surface_paths": [
+          "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_105967_148850_f075c2d564_64b079fd4696.html"
+        ],
+        "publication_hint": "Gaceta 236 del 16/12/2025 Alcance 161; PDF listed as /mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/gaceta/raw/gaceta_2025-12-16.pdf"
+      },
+      "demo_role": [
+        "Strong alternate simple recent law",
+        "Fallback for the simple-law slot"
+      ],
+      "known_caveats": [
+        "Does not satisfy the required law-decree relation.",
+        "Gaceta publication hint does not validate legacy Gaceta segmentation."
+      ],
+      "must_not_claim": [
+        "Law-decree relation satisfaction",
+        "Final Demo acceptance readiness",
+        "Clean Gaceta segment correctness"
+      ],
+      "next_action": "Use only if humans replace ley_10790 or ley_10791 as a simple-law fallback; it cannot replace the relation partner."
+    }
+  ],
+  "relations": [
+    {
+      "relation_id": "demo_relation_001",
+      "status": "verified_pending_human_approval",
+      "subject_candidate_id": "demo_resource_004",
+      "predicate": "eli:based_on",
+      "object_candidate_id": "demo_resource_002",
+      "inverse_predicate": "eli:basis_for",
+      "source_evidence": {
+        "source_system": "scij",
+        "source_identity": "1:95992:139872",
+        "related_surface_raw_path": "/mnt/Tokyo/Lab/Git/Plaza/archive/old/data/sources/scij/raw/scij_1_95992_139872_66b49a8228_2cdd3660a8a3.html",
+        "related_surface_manifest_path": null,
+        "related_surface_manifest_status": "pending_phase_2_fixture_resolution",
+        "evidence_text": "Ley: 7092; Nombre: Ley del Impuesto sobre la Renta; Afectacion: Reglamentacion; Modo: Expreso"
+      },
+      "must_not_claim": [
+        "Complete regulatory coverage",
+        "Legal interpretation",
+        "Article-level relation correctness"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "blocker_id": "demo_resource_blocker_001",
+      "status": "resolved_pending_human_approval",
+      "resource_candidate_id": "demo_resource_004",
+      "description": "The law-decree or law-regulation partner required by the Demo acceptance contract was located in targeted SCIJ related-surface evidence.",
+      "affected_requirement": "At least one law-decree relation is present.",
+      "next_action": "Approve or reject demo_resource_004 and demo_relation_001 before evidence fixture preservation."
+    }
+  ]
+}

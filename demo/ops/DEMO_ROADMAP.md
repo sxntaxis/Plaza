@@ -1,35 +1,38 @@
-# 0.5.0 Demo Roadmap - Functional Local MCP Demo
+# Demo Roadmap - Functional Local MCP Demo
 
-## Release goal
+## Goal
 
-`0.5.0` turns the `0.4.0` scaffold into a functional local stdio MCP Demo backed by four real legal resources, preserved source artifacts, SHACL validation, citation-complete read-only tools/resources, and no-interpretation guardrails.
+The functional Demo work turns the `0.4.0` scaffold into a functional local stdio MCP Demo backed by the minimum useful approved set of real legal resources, preserved source artifacts, SHACL validation, citation-complete read-only tools/resources, and no-interpretation guardrails.
+
+The resource set is intentionally small for the functional Demo, but the architecture should not hardcode smallness. Corpus expansion is a later lane after the controlled Demo path is correct.
 
 ## Inputs
 
 - `demo/specs/STANDARDS_IMPLEMENTATION_PROFILE.md`
 - `demo/specs/MCP_IMPLEMENTATION_PROFILE.md`
 - `demo/specs/STATE_AND_SIGNALS.md`
-- `demo/research/2026-04-25-standards-implementation-profile.source.md`
-- `demo/research/2026-04-25-mcp-implementation-profile.source.md`
+- `demo/ops/DEMO_PHASE1_SELECTION_SUMMARY.md`
+- `demo/research/source_audits/CORRECTNESS_AUDIT_REPORT.md`
+- `demo/research/source_audits/INVENTORY_REPORT.md`
 - Foundational docs in `docs/`
 
-## Phase 1 - Select the four real legal resources
+## Phase 1 - Select the approved legal-resource set
 
 Purpose: choose the exact resources represented by the Demo and freeze their identifiers.
 
-Files likely touched: `demo/ops/0.5.0_ACCEPTANCE_CONTRACT.md`, `data/demo/manifest.json`, `registry/sources.yml`.
+Files likely touched: `demo/ops/DEMO_ACCEPTANCE_CONTRACT.md`, `data/demo/manifest.candidate.json`, `registry/sources.yml`.
 
 Outputs produced: resource list, source IDs, Demo URI candidates, selection rationale.
 
 Tests/verification: every selected legal resource has a `https://demo.plaza.cr/eli/...` URI; no person modeling; no legal interpretation claims.
 
-Blocking decisions: exact law/decree pair, whether constitution counts as one of the four, and what SCIJ evidence is acceptable for each resource.
+Blocking decisions: exact law/decree pair, whether constitution stays in the Demo resource set, and what SCIJ evidence is acceptable for each resource.
 
 ## Phase 2 - Preserve SCIJ source artifacts
 
 Purpose: store the evidence used to construct the Demo graph without relying on live network access at runtime.
 
-Files likely touched: `var/artifacts/` during local work, promoted fixture/preserved artifact location selected for commit, `data/demo/manifest.json`.
+Files likely touched: `var/artifacts/` during local work and the promoted fixture/preserved artifact location selected for commit.
 
 Outputs produced: preserved SCIJ source artifacts and capture metadata.
 
@@ -41,7 +44,7 @@ Blocking decisions: where committed Demo evidence lives if it cannot remain in i
 
 Purpose: wrap every preserved source artifact with source, capture, storage, and hash metadata.
 
-Files likely touched: `src/plaza/core/artifacts/`, `data/demo/manifest.json`, tests.
+Files likely touched: `src/plaza/core/artifacts/`, selected artifact-envelope records, tests.
 
 Outputs produced: artifact envelopes with `sha256:` hashes and run IDs.
 
@@ -55,7 +58,7 @@ Purpose: extract the minimal fields needed for legal resources, expressions, tex
 
 Files likely touched: `src/plaza/sources/scij/`, `src/plaza/core/reconciliation/`, tests.
 
-Outputs produced: deterministic refined records for the four resources.
+Outputs produced: deterministic refined records for the approved resource set.
 
 Tests/verification: refinement is repeatable from preserved artifacts and does not access network at runtime.
 
@@ -67,7 +70,7 @@ Purpose: replace scaffold graph generation with deterministic RDF output from re
 
 Files likely touched: `src/plaza/demo/build_graph.py`, `src/plaza/core/canonicalization/`, `data/demo/canonical/demo.ttl`, tests.
 
-Outputs produced: Turtle graph for exactly four real legal resources and their expressions.
+Outputs produced: Turtle graph for the approved real legal resources and their expressions.
 
 Tests/verification: Turtle parses; all legal URIs use Demo host; law-decree relation uses `eli:based_on` / `eli:basis_for`; no active `eli:applies` default relation.
 
@@ -133,7 +136,7 @@ Tests/verification: all acceptance contract checks pass on a clean local checkou
 
 Blocking decisions: smoke-test host/version and reproducible test fixture setup.
 
-## Out of scope for 0.5.0
+## Out of scope for the functional Demo
 
 - Public HTTP MCP.
 - REST API.
@@ -144,11 +147,16 @@ Blocking decisions: smoke-test host/version and reproducible test fixture setup.
 - Person modeling.
 - Legal interpretation.
 - Public production URIs or official certification claims.
+- Full SCIJ raw collection ingestion.
+
+## Future lane - broader SCIJ corpus expansion
+
+After the functional Demo, Plaza may expand from the approved Demo set toward a broader SCIJ raw-backed corpus. That expansion must reuse the same evidence, provenance, validation, and URI discipline rather than importing unsafe legacy canonical IDs or article structure.
 
 ## Release exit criteria
 
-- `demo/ops/0.5.0_ACCEPTANCE_CONTRACT.md` passes in full.
-- Exactly four real legal resources are represented.
+- `demo/ops/DEMO_ACCEPTANCE_CONTRACT.md` passes in full.
+- The approved real legal-resource set is represented.
 - SHACL report conforms from a real SHACL run.
 - MCP tools/resources are implemented and citation-complete.
 - Claude Desktop local stdio smoke test passes.
